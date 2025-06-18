@@ -1,0 +1,11 @@
+{
+  "name": "@cstn/commitlint-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./commitlint": "./commitlint.config.js"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "19.8.1"
+  }
+}
