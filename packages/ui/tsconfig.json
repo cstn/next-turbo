@@ -1,8 +1,9 @@
 {
   "extends": "@cstn/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["vitest", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": [ "**/*.ts","src"],
   "exclude": ["node_modules", "dist"]
 }

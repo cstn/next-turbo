@@ -1,0 +1,16 @@
+{
+  "name": "@cstn/vitest-config",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./react": "./dist/react.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.5.2",
+    "@vitest/coverage-v8": "3.2.4",
+    "vite-tsconfig-paths": "5.1.4"
+  }
+}

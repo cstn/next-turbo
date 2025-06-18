@@ -1,0 +1,1 @@
+# `@cstn/vitest-config`
