@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "exports": {
+    "./base": "./dist/base.js",
     "./react": "./dist/react.js"
   },
   "scripts": {
