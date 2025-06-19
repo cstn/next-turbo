@@ -40,15 +40,18 @@ Copy `.env.example` to `.env` and set up the environment vars
 
 ```shell
 npm run build
-npm run dev
+npm start --workspace=web
 ```
 
 
 ### Develop
 
- Run the development server:
+Run the development server:
 ```shell
 npm run dev
 ```
 
-
+Run tests:
+```shell
+npm run test:workspace
+```
