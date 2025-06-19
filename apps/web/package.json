@@ -1,6 +1,7 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "@cstn/web",
+  "version": "1.0.0",
+  "description": "A web application built with Next.js and Tailwind CSS.",
   "type": "module",
   "private": true,
   "scripts": {
