@@ -42,6 +42,13 @@ npm run build
 npm start --workspace=web
 ```
 
+### Running the storybook
+
+```shell
+npm run build:storybook
+npm run storybook
+```
+
 ### Develop
 
 Run the development server:
