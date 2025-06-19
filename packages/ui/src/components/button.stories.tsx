@@ -4,7 +4,7 @@ import { ChevronRightIcon } from "lucide-react";
 import { Button } from "./button";
 
 const meta: Meta<typeof Button> = {
-  title: "ui/Button",
+  title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
   argTypes: {},
