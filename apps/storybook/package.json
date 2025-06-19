@@ -19,6 +19,7 @@
     "@cstn/eslint-config": "*",
     "@cstn/typescript-config": "*",
     "@storybook/nextjs": "9.0.12",
+    "@storybook/addon-a11y": "9.0.12",
     "@storybook/addon-links": "9.0.12",
     "@storybook/addon-styling-webpack": "1.0.1",
     "@tailwindcss/postcss": "4.1.10",
