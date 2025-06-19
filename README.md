@@ -8,8 +8,8 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
+- `web`: a [Next.js](https://nextjs.org/) app
+- `storybook`: a [Storybook](https://storybook.js.org/)
 - `@cstn/ui`: React component library
 - `@cstn/eslint-config`: `eslint` configurations
 - `@cstn/typescript-config`: `tsconfig.json`s used throughout the monorepo

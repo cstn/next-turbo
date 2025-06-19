@@ -1,0 +1,39 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@cstn/ui": "*",
+    "next": "15.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "3.2.6",
+    "@cstn/eslint-config": "*",
+    "@cstn/typescript-config": "*",
+    "@storybook/nextjs": "8.6.14",
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/addon-interactions": "8.6.14",
+    "@storybook/addon-links": "8.6.14",
+    "@storybook/addon-styling-webpack": "1.0.1",
+    "@storybook/blocks": "8.6.14",
+    "@storybook/react": "8.6.14",
+    "@storybook/test": "8.6.14",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "eslint-plugin-storybook": "0.12.0",
+    "storybook": "8.6.14",
+    "storybook-i18n": "3.1.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
