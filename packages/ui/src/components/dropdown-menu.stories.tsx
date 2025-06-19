@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,17 +13,17 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   DropdownMenuCheckboxItem,
-} from './dropdown-menu';
-import { Button } from './button';
+} from "./dropdown-menu";
+import { Button } from "./button";
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: 'Components/DropdownMenu',
+  title: "Components/DropdownMenu",
   component: DropdownMenu,
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof DropdownMenu>
+type Story = StoryObj<typeof DropdownMenu>;
 
 export const Default: Story = {
   render: () => (
@@ -33,7 +33,7 @@ export const Default: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator/>
+        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>Profile</DropdownMenuItem>
           <DropdownMenuItem>Billing</DropdownMenuItem>
@@ -52,7 +52,7 @@ export const WithCheckboxItems: Story = {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Preferences</DropdownMenuLabel>
-        <DropdownMenuSeparator/>
+        <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem checked>Show Status</DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem>Auto Update</DropdownMenuCheckboxItem>
       </DropdownMenuContent>
@@ -77,7 +77,7 @@ export const WithSubmenu: Story = {
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
-        <DropdownMenuSeparator/>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           Keyboard Shortcut
           <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>

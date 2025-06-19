@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Spinner } from './spinner';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Spinner } from "./spinner";
 
 const meta = {
-  title: 'Components/Spinner',
+  title: "Components/Spinner",
   component: Spinner,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
   args: {
     size: 32,
   },
@@ -40,6 +40,6 @@ export const Large: Story = {
 
 export const Blue: Story = {
   args: {
-    color: 'blue',
+    color: "blue",
   },
 };

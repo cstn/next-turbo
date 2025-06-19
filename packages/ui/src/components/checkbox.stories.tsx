@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './checkbox';
-import { Label } from '@radix-ui/react-label';
-import { fn } from 'storybook/test';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Checkbox } from "./checkbox";
+import { Label } from "@radix-ui/react-label";
+import { fn } from "storybook/test";
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: "Components/Checkbox",
   component: Checkbox,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
   args: {
     onClick: fn(),
-  }
+  },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => (

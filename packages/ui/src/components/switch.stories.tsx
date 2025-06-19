@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Switch } from './switch';
-import { Label } from './label';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Switch } from "./switch";
+import { Label } from "./label";
 
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: "Components/Switch",
   component: Switch,
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 };
 

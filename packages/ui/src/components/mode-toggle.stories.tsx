@@ -1,21 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import ModeToggle from './mode-toggle';
+import type { Meta, StoryObj } from "@storybook/react";
+import ModeToggle from "./mode-toggle";
 
 const meta: Meta<typeof ModeToggle> = {
-  title: 'Components/ModeToggle',
+  title: "Components/ModeToggle",
   component: ModeToggle,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ModeToggle>
+type Story = StoryObj<typeof ModeToggle>;
 
 export const Default: Story = {
   parameters: {
-    theme: 'light',
+    theme: "light",
   },
 };
-

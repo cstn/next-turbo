@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './sheet';
-import { Button } from './button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./sheet";
+import { Button } from "./button";
 
 const meta: Meta<typeof Sheet> = {
-  title: 'Components/Sheet',
+  title: "Components/Sheet",
   component: Sheet,
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof Sheet>
+type Story = StoryObj<typeof Sheet>;
 
 export const Default: Story = {
   render: () => (
@@ -20,9 +20,7 @@ export const Default: Story = {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Sheet Title</SheetTitle>
-          <SheetDescription>
-            This is a description for the sheet dialog.
-          </SheetDescription>
+          <SheetDescription>This is a description for the sheet dialog.</SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>
@@ -38,9 +36,7 @@ export const LeftSide: Story = {
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Left Side Sheet</SheetTitle>
-          <SheetDescription>
-            This sheet slides in from the left side.
-          </SheetDescription>
+          <SheetDescription>This sheet slides in from the left side.</SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>
@@ -59,9 +55,7 @@ export const CustomContent: Story = {
         </SheetHeader>
         <div className="py-4">
           <h4 className="text-sm font-medium">Custom Content</h4>
-          <p className="text-sm text-muted-foreground">
-            This is an example of custom content in the sheet.
-          </p>
+          <p className="text-sm text-muted-foreground">This is an example of custom content in the sheet.</p>
         </div>
       </SheetContent>
     </Sheet>

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { expect, fn } from 'storybook/test';
+import type { Meta, StoryObj } from "@storybook/react";
+import { expect, fn } from "storybook/test";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,12 +10,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from './alert-dialog';
-import { Button } from './button';
-import { useState } from 'react';
+} from "./alert-dialog";
+import { Button } from "./button";
+import { useState } from "react";
 
 const meta: Meta<typeof AlertDialog> = {
-  title: 'Components/AlertDialog',
+  title: "Components/AlertDialog",
   component: AlertDialog,
   subcomponents: {
     AlertDialogAction,
@@ -27,14 +27,14 @@ const meta: Meta<typeof AlertDialog> = {
     AlertDialogTitle,
     AlertDialogTrigger,
   },
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
   args: {
-    onOpenChange: fn()
-  }
+    onOpenChange: fn(),
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof AlertDialog>
+type Story = StoryObj<typeof AlertDialog>;
 
 export const Default: Story = {
   render: (args) => (
@@ -54,7 +54,7 @@ export const Default: Story = {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  ),
 };
 
 export const Confirmation: Story = {
@@ -93,9 +93,7 @@ const AlertDialogWithCustomTrigger = () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Custom Trigger Dialog</AlertDialogTitle>
-            <AlertDialogDescription>
-              This dialog is opened by a custom button click.
-            </AlertDialogDescription>
+            <AlertDialogDescription>This dialog is opened by a custom button click.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel onClick={() => setIsOpen(false)}>Close</AlertDialogCancel>
@@ -103,8 +101,8 @@ const AlertDialogWithCustomTrigger = () => {
         </AlertDialogContent>
       </AlertDialog>
     </>
-  )
-}
+  );
+};
 
 export const WithCustomTrigger: Story = {
   render: () => <AlertDialogWithCustomTrigger />,
@@ -129,9 +127,9 @@ export const Test: Story = {
       </AlertDialogContent>
     </AlertDialog>
   ),
-  play: async({ args, canvas, userEvent }) => {
+  play: async ({ args, canvas, userEvent }) => {
     const button = await canvas.findByRole("button");
     await userEvent.click(button);
     await expect(args.onOpenChange).toHaveBeenCalled();
-  }
+  },
 };

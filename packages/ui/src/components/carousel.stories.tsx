@@ -1,24 +1,24 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./carousel";
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Components/Carousel',
+  title: "Components/Carousel",
   component: Carousel,
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
   argTypes: {
-    opts: { control: 'object' },
+    opts: { control: "object" },
   },
   args: {
     opts: {
       loop: false,
-      align: 'start',
+      align: "start",
       dragFree: false,
-    }
+    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Carousel>
+type Story = StoryObj<typeof Carousel>;
 
 export const Primary: Story = {
   render: (args: { [key: string]: any }) => (
@@ -30,8 +30,8 @@ export const Primary: Story = {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="abolute -left-4"/>
-      <CarouselNext className="abolute -right-4"/>
+      <CarouselPrevious className="abolute -left-4" />
+      <CarouselNext className="abolute -right-4" />
     </Carousel>
   ),
 };
@@ -46,8 +46,8 @@ export const WithManySlides: Story = {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="abolute -left-4"/>
-      <CarouselNext className="abolute -right-4"/>
+      <CarouselPrevious className="abolute -left-4" />
+      <CarouselNext className="abolute -right-4" />
     </Carousel>
   ),
 };
@@ -67,8 +67,8 @@ export const WithLoop: Story = {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="abolute -left-4"/>
-      <CarouselNext className="abolute -right-4"/>
+      <CarouselPrevious className="abolute -left-4" />
+      <CarouselNext className="abolute -right-4" />
     </Carousel>
   ),
 };

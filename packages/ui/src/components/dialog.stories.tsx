@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   Dialog,
   DialogContent,
@@ -7,20 +7,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './dialog';
-import { Button } from './button';
-import { Label } from './label';
-import { Input } from './input';
-import { useState } from 'react';
+} from "./dialog";
+import { Button } from "./button";
+import { Label } from "./label";
+import { Input } from "./input";
+import { useState } from "react";
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Components/Dialog',
+  title: "Components/Dialog",
   component: Dialog,
-  tags: [ 'autodocs' ],
+  tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof Dialog>
+type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
   render: () => (
@@ -62,9 +62,7 @@ export const WithDescription: Story = {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit Profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
-          </DialogDescription>
+          <DialogDescription>Make changes to your profile here. Click save when you are done.</DialogDescription>
         </DialogHeader>
         <div className="py-4">This is a dialog with a description.</div>
       </DialogContent>
@@ -73,14 +71,16 @@ export const WithDescription: Story = {
 };
 
 const DialogWithTrigger = () => {
-  const [ isOpen, setIsOpen ] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <>
-      <Button variant="outline" onClick={handleButtonClick}>Open Dialog with Trigger</Button>
+      <Button variant="outline" onClick={handleButtonClick}>
+        Open Dialog with Trigger
+      </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
@@ -106,22 +106,20 @@ export const WithForm: Story = {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit Profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
-          </DialogDescription>
+          <DialogDescription>Make changes to your profile here. Click save when you are done.</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" defaultValue="Pedro Duarte" className="col-span-3"/>
+            <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Username
             </Label>
-            <Input id="username" defaultValue="@peduarte" className="col-span-3"/>
+            <Input id="username" defaultValue="@peduarte" className="col-span-3" />
           </div>
         </div>
         <DialogFooter>

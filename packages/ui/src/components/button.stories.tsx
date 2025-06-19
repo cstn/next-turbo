@@ -21,11 +21,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-  play: async({ args, canvas, userEvent }) => {
+  play: async ({ args, canvas, userEvent }) => {
     const button = await canvas.findByRole("button");
     await userEvent.click(button);
     await expect(args.onClick).toHaveBeenCalled();
-  }
+  },
 };
 
 export const Secondary: Story = {
