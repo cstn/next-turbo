@@ -24,6 +24,8 @@
     "@cstn/typescript-config": "*",
     "@cstn/vitest-config": "*",
     "@cstn/validation": "*",
+    "@storybook/react": "8.2.10",
+    "@storybook/test": "8.6.14",
     "@tailwindcss/cli": "4.1.8",
     "@tailwindcss/postcss": "4.1.7",
     "@testing-library/dom": "10.4.0",

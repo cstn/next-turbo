@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build:storybook": "storybook build"
   },
   "dependencies": {
     "@cstn/ui": "*",
     "next": "15.3.4",
+    "next-themes": "0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
