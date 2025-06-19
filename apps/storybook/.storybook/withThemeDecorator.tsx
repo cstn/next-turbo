@@ -1,4 +1,4 @@
-import { Decorator } from "@storybook/react";
+import { Decorator } from "@storybook/nextjs";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 const WithThemeDecorator: Decorator = (Story, context) => {

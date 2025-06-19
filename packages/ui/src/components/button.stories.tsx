@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { fn } from "storybook/test";
 import { ChevronRightIcon } from "lucide-react";
 import { Button } from "./button";
 
@@ -57,7 +57,7 @@ export const Icon: Story = {
   args: {
     variant: "secondary",
   },
-  render: (args: { [key: string]: unknown }) => (
+  render: (args) => (
     <Button {...args}>
       <ChevronRightIcon />
     </Button>
@@ -67,11 +67,10 @@ export const Icon: Story = {
 export const WithIcon: Story = {
   args: {
     variant: "secondary",
-    label: "Continue",
   },
-  render: (args: { [key: string]: string }) => (
+  render: (args) => (
     <Button {...args}>
-      <ChevronRightIcon /> {args.label}
+      <ChevronRightIcon /> {args.children}
     </Button>
   ),
 };

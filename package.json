@@ -18,7 +18,7 @@
     "test:workspace": "turbo run test",
     "test:workspace:watch": "turbo run test:watch",
     "test:workspace:coverage": "turbo run test:coverage",
-    "storybook": "npm run dev --workspace=storybook"
+    "storybook": "npm run dev --workspace=@cstn/storybook"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",

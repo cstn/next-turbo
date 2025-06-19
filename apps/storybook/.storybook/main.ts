@@ -11,6 +11,13 @@ function getAbsolutePath(value: string): string {
 }
 
 const config: StorybookConfig = {
+  core: {
+    disableTelemetry: true,
+  },
+  framework: {
+    name: getAbsolutePath("@storybook/nextjs"),
+    options: {},
+  },
   stories: [
     '../src/**/*.mdx',
     '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
@@ -18,15 +25,10 @@ const config: StorybookConfig = {
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-styling-webpack"),
+    getAbsolutePath("@storybook/addon-docs")
   ],
-  framework: {
-    name: getAbsolutePath("@storybook/nextjs"),
-    options: {},
-  },
   staticDirs: [ '../../web/public' ],
 };
 export default config;

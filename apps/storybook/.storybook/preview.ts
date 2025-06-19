@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/nextjs";
 import withThemeDecorator, { globalTypes as themeGlobalTypes } from "./withThemeDecorator";
 import "@cstn/ui/styles/globals.css";
 
