@@ -1,3 +1,3 @@
-const THEMES: string[] = ['light', 'dark', 'neutral', 'system'];
+const THEMES: string[] = ["light", "dark", "neutral", "system"];
 
 export default THEMES;

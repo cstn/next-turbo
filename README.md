@@ -19,8 +19,8 @@ This Turborepo includes the following packages/apps:
 
 ## Requirements
 
-* Node version 20 or above
-* npm version 10 or above
+- Node version 20 or above
+- npm version 10 or above
 
 ## Using this demo
 
@@ -35,7 +35,6 @@ npm install
 
 Copy `.env.example` to `.env` and set up the environment vars
 
-
 ### Running the demo
 
 ```shell
@@ -43,15 +42,16 @@ npm run build
 npm start --workspace=web
 ```
 
-
 ### Develop
 
 Run the development server:
+
 ```shell
 npm run dev
 ```
 
 Run tests:
+
 ```shell
 npm run test:workspace
 ```

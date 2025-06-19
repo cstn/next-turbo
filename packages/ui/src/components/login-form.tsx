@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
-import { FieldErrors, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Username } from '@cstn/validation/username';
-import { Password } from '@cstn/validation/password';
+import { FC } from "react";
+import { FieldErrors, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Username } from "@cstn/validation/username";
+import { Password } from "@cstn/validation/password";
 import {
   Form,
   FormControl,
@@ -14,22 +14,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@cstn/ui/components/form';
-import { Button } from '@cstn/ui/components/button';
-import { Input } from '@cstn/ui/components/input';
+} from "@cstn/ui/components/form";
+import { Button } from "@cstn/ui/components/button";
+import { Input } from "@cstn/ui/components/input";
 
 type Props = {
   username: {
     label?: string;
     placeholder?: string;
     description?: string;
-  },
+  };
   password: {
     label?: string;
     placeholder?: string;
     description?: string;
-  },
-}
+  };
+};
 
 const FormSchema = z.object({
   username: Username,
@@ -40,13 +40,13 @@ export const LoginForm: FC<Props> = ({ username, password }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     },
   });
 
   const handleSubmit = (values: z.infer<typeof FormSchema>) => {
-    console.log('Form submitted with values:', values);
+    console.log("Form submitted with values:", values);
   };
 
   const handleError = (errors: FieldErrors) => {
@@ -65,8 +65,8 @@ export const LoginForm: FC<Props> = ({ username, password }) => {
               <FormControl>
                 <Input placeholder={username.placeholder} {...field} />
               </FormControl>
-              {username.description && (<FormDescription>{username.description}</FormDescription>)}
-              <FormMessage/>
+              {username.description && <FormDescription>{username.description}</FormDescription>}
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -79,8 +79,8 @@ export const LoginForm: FC<Props> = ({ username, password }) => {
               <FormControl>
                 <Input type="password" placeholder={password.placeholder} {...field} />
               </FormControl>
-              {password.description && (<FormDescription>{password.description}</FormDescription>)}
-              <FormMessage/>
+              {password.description && <FormDescription>{password.description}</FormDescription>}
+              <FormMessage />
             </FormItem>
           )}
         />

@@ -10,8 +10,8 @@
     "@cstn/ui": "*",
     "next": "15.3.4",
     "next-themes": "0.4.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.6",
@@ -26,15 +26,15 @@
     "@storybook/react": "8.6.14",
     "@storybook/test": "8.6.14",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/node": "22.15.32",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "eslint": "9.29.0",
     "eslint-config-next": "15.3.4",
     "eslint-plugin-storybook": "0.12.0",
     "storybook": "8.6.14",
     "storybook-i18n": "3.1.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "4.1.7",
+    "typescript": "5.8.2"
   }
 }

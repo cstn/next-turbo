@@ -1,3 +1,3 @@
-import baseConfig from '@cstn/vitest-config/base';
+import baseConfig from "@cstn/vitest-config/base";
 
-export default baseConfig
+export default baseConfig;

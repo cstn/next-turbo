@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { ChevronRightIcon } from "lucide-react"
-import { Button } from './button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { ChevronRightIcon } from "lucide-react";
+import { Button } from "./button";
 
 const meta: Meta<typeof Button> = {
-  title: 'ui/Button',
+  title: "ui/Button",
   component: Button,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {},
   args: {
-    className: 'm-4',
-    children: 'Click me',
-    type: 'button',
+    className: "m-4",
+    children: "Click me",
+    type: "button",
     onClick: fn(),
   },
 };
@@ -19,63 +19,61 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-
 export const Default: Story = {
   args: {},
 };
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
+    variant: "secondary",
   },
 };
 
 export const Destructive: Story = {
   args: {
-    variant: 'destructive',
+    variant: "destructive",
   },
 };
 
 export const Outline: Story = {
   args: {
-    variant: 'outline',
+    variant: "outline",
   },
 };
 
 export const Ghost: Story = {
   args: {
-    variant: 'ghost',
+    variant: "ghost",
   },
-}
+};
 
 export const Link: Story = {
   args: {
-    variant: 'link',
+    variant: "link",
   },
 };
 
 export const Icon: Story = {
   args: {
-    variant: 'secondary',
+    variant: "secondary",
   },
-  render: (args) => (
+  render: (args: { [key: string]: unknown }) => (
     <Button {...args}>
       <ChevronRightIcon />
     </Button>
-  )
+  ),
 };
 
 export const WithIcon: Story = {
   args: {
-    variant: 'secondary',
-    label: 'Continue',
+    variant: "secondary",
+    label: "Continue",
   },
-  render: (args) => (
+  render: (args: { [key: string]: string }) => (
     <Button {...args}>
       <ChevronRightIcon /> {args.label}
     </Button>
-  )
+  ),
 };
 
 export const Disabled: Story = {

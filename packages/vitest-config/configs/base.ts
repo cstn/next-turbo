@@ -1,10 +1,10 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
     coverage: {
-      reporter: ['text', 'json', 'html'],
-      include: ['src/'],
+      reporter: ["text", "json", "html"],
+      include: ["src/"],
       thresholds: {
         branches: 20,
         functions: 20,

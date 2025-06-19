@@ -1,16 +1,16 @@
-import { cn } from '../lib/utils';
-import React from 'react';
+import { cn } from "../lib/utils";
+import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement> & {
-  size?: number,
-  className?: string,
+  size?: number;
+  className?: string;
 };
 
 export const Spinner = ({ size = 24, className, ...props }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={cn('animate-spin', className)}
+      className={cn("animate-spin", className)}
       fill="none"
       viewBox="0 0 24 24"
       height={size}
