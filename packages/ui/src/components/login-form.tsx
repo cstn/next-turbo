@@ -4,6 +4,7 @@ import { FC } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import clsx from "clsx";
 import { Username } from "@cstn/validation/username";
 import { Password } from "@cstn/validation/password";
 import {
@@ -17,8 +18,9 @@ import {
 } from "@cstn/ui/components/form";
 import { Button } from "@cstn/ui/components/button";
 import { Input } from "@cstn/ui/components/input";
+import { PropsWithStyle } from '@cstn/ui/props';
 
-type Props = {
+type Props = PropsWithStyle & {
   username: {
     label?: string;
     placeholder?: string;
@@ -29,6 +31,8 @@ type Props = {
     placeholder?: string;
     description?: string;
   };
+  onError?: (errors: FieldErrors) => void;
+  onSubmit: (values: z.infer<typeof FormSchema>) => void;
 };
 
 const FormSchema = z.object({
@@ -36,7 +40,7 @@ const FormSchema = z.object({
   password: Password,
 });
 
-export const LoginForm: FC<Props> = ({ username, password }) => {
+export const LoginForm: FC<Props> = ({ className, classNames, username, password, onSubmit, onError}) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -45,28 +49,20 @@ export const LoginForm: FC<Props> = ({ username, password }) => {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof FormSchema>) => {
-    console.log("Form submitted with values:", values);
-  };
-
-  const handleError = (errors: FieldErrors) => {
-    console.error(errors);
-  };
-
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="w-full max-w-sm">
+    <Form  {...form}>
+      <form className={clsx("w-full max-w-sm", className, classNames?.root)} onSubmit={form.handleSubmit(onSubmit, onError)}>
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>{username.label}</FormLabel>
-              <FormControl>
-                <Input placeholder={username.placeholder} {...field} />
+            <FormItem className={classNames?.field}>
+              <FormLabel className={classNames?.label}>{username.label}</FormLabel>
+              <FormControl className={classNames?.control}>
+                <Input className={classNames?.input} placeholder={username.placeholder} {...field} />
               </FormControl>
-              {username.description && <FormDescription>{username.description}</FormDescription>}
-              <FormMessage />
+              {username.description && <FormDescription className={classNames?.description}>{username.description}</FormDescription>}
+              <FormMessage className={classNames?.message} />
             </FormItem>
           )}
         />
@@ -74,13 +70,13 @@ export const LoginForm: FC<Props> = ({ username, password }) => {
           control={form.control}
           name="password"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>{password.label}</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder={password.placeholder} {...field} />
+            <FormItem className={classNames?.field}>
+              <FormLabel className={classNames?.label}>{password.label}</FormLabel>
+              <FormControl className={classNames?.control}>
+                <Input className={classNames?.input} type="password" placeholder={password.placeholder} {...field} />
               </FormControl>
-              {password.description && <FormDescription>{password.description}</FormDescription>}
-              <FormMessage />
+              {password.description && <FormDescription className={classNames?.description}>{password.description}</FormDescription>}
+              <FormMessage className={classNames?.message} />
             </FormItem>
           )}
         />
