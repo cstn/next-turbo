@@ -1,0 +1,20 @@
+{
+  "name": "@cstn/i18n",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/hooks/*.(ts|json)"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next-intl": "4.1.0"
+  },
+  "devDependencies": {
+    "@cstn/eslint-config": "*",
+    "@cstn/typescript-config": "*",
+    "@cstn/vitest-config": "*"
+  }
+}

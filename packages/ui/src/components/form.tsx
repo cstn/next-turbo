@@ -15,6 +15,7 @@ import {
 
 import { cn } from "@cstn/ui/lib/utils";
 import { Label } from "@cstn/ui/components/label";
+import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 
 const Form = FormProvider;
 
@@ -122,7 +123,8 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
 
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message ?? "") : props.children;
+  const t = useFormTranslations()
+  const body = error?.message ? t(String(error?.message)) : props.children;
 
   if (!body) {
     return null;

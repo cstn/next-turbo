@@ -10,12 +10,12 @@ describe("Username validator", () => {
   it("should reject empty username", () => {
     const result = Username.safeParse("");
     expect(result.success).toBe(false);
-    expect(result?.error?.errors?.[0]?.message).toBe("usernameRequired");
+    expect(result?.error?.errors?.[0]?.message).toBe("username.required");
   });
 
   it("should reject undefined username", () => {
     const result = Username.safeParse(undefined);
     expect(result.success).toBe(false);
-    expect(result?.error?.errors?.[0]?.message).toBe("usernameRequired");
+    expect(result?.error?.errors?.[0]?.message).toBe("username.required");
   });
 });

@@ -10,14 +10,6 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    username: {
-      label: "Username",
-      placeholder: "Enter your username",
-    },
-    password: {
-      label: "Password",
-      placeholder: "Enter your password",
-    },
     onError: fn(),
     onSubmit: fn(),
     classNames: {

@@ -7,6 +7,7 @@ import { z } from "zod";
 import clsx from "clsx";
 import { Username } from "@cstn/validation/username";
 import { Password } from "@cstn/validation/password";
+import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
   FormControl,
@@ -21,16 +22,6 @@ import { Input } from "@cstn/ui/components/input";
 import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
-  username: {
-    label?: string;
-    placeholder?: string;
-    description?: string;
-  };
-  password: {
-    label?: string;
-    placeholder?: string;
-    description?: string;
-  };
   onError?: (errors: FieldErrors) => void;
   onSubmit: (values: z.infer<typeof FormSchema>) => void;
 };
@@ -40,7 +31,8 @@ const FormSchema = z.object({
   password: Password,
 });
 
-export const LoginForm: FC<Props> = ({ className, classNames, username, password, onSubmit, onError}) => {
+export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError}) => {
+  const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -57,11 +49,11 @@ export const LoginForm: FC<Props> = ({ className, classNames, username, password
           name="username"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{username.label}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('username.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input className={classNames?.input} placeholder={username.placeholder} {...field} />
+                <Input className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
               </FormControl>
-              {username.description && <FormDescription className={classNames?.description}>{username.description}</FormDescription>}
+              <FormDescription className={classNames?.description}>{t('username.description')}</FormDescription>
               <FormMessage className={classNames?.message} />
             </FormItem>
           )}
@@ -71,11 +63,11 @@ export const LoginForm: FC<Props> = ({ className, classNames, username, password
           name="password"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{password.label}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input className={classNames?.input} type="password" placeholder={password.placeholder} {...field} />
+                <Input className={classNames?.input} type="password" placeholder={t('password.placeholder')} {...field} />
               </FormControl>
-              {password.description && <FormDescription className={classNames?.description}>{password.description}</FormDescription>}
+              <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
               <FormMessage className={classNames?.message} />
             </FormItem>
           )}

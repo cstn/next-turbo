@@ -1,0 +1,39 @@
+{
+  "ok":  "OK",
+  "cancel": "Abbrechen",
+  "continue": "Fortfahren",
+  "form": {
+    "submit": "Senden",
+    "reset": "Zurücksetzen",
+    "required": "Pflichtfeld",
+    "email": {
+      "label": "E-Mail",
+      "placeholder": "Ihre E-Mail-Adresse",
+      "description": "Dies ist Ihre primäre E-Mail.",
+      "required": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+      "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+    },
+    "password": {
+      "label": "Passwort",
+      "placeholder": "Ihr Passwort",
+      "description": "Dies ist Ihr sicheres Passwort für die Anmeldung.",
+      "required": "Bitte geben Sie Ihr Passwort ein.",
+      "minLength": "Ihr Password muss mindestens {min} Zeichen lang sein.",
+      "maxLength": "Ihr Passwort darf nicht länger als {max} Zeichen sein.",
+      "invalid": "Ihr Passwort ist ungültig. Es muss mindestens ein Großbuchstabe, ein Kleinbuchstabe, eine Zahl und ein Sonderzeichen enthalten."
+    },
+    "confirmPassword": {
+      "match": "Die Passwörter stimmen nicht überein.",
+      "required": "Bitte bestätigen Sie Ihr Passwort."
+    },
+    "username": {
+      "label": "Benutzername",
+      "placeholder": "Ihr Benutzername",
+      "description": "Das ist Ihr eindeutiger Benutzername für die Anmeldung.",
+      "required": "Bitte geben Sie Ihren Benutzernamen ein.",
+      "minLength": "Der Benutzername muss mindestens {min} Zeichen lang sein.",
+      "maxLength": "Der Benutzername darf nicht länger als {max} Zeichen sein.",
+      "invalid": "Ihr Benutzername ist ungültig. Er darf nur Buchstaben, Zahlen, Punkt, Strich und Unterstriche enthalten."
+    }
+  }
+}
