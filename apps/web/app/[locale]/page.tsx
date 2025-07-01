@@ -1,13 +1,10 @@
-import { Button } from '@cstn/ui/components/button';
-import ModeToggle from '@cstn/ui/components/mode-toggle';
+import { Link } from '@/i18n/navigation';
 
 const Home = () =>
   (
     <main className="p-24">
       <div className="flex flex-col items-center justify-center space-y-4">
-        <Button>Button</Button>
-
-        <ModeToggle/>
+        <Link href="/login">Log in</Link>
       </div>
     </main>
   );

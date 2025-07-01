@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"],
-      "@cstn/ui/*": ["../../packages/ui/src/*"]
+      "@cstn/ui/*": ["../../packages/ui/src/*"],
+      "@cstn/i18n/*": ["../../packages/i18/src/*"]
     },
     "plugins": [
       {
