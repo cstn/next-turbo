@@ -5,8 +5,7 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import clsx from 'clsx';
-import { Username } from '@cstn/validation/username';
-import { Password } from '@cstn/validation/password';
+import { Email } from '@cstn/validation/email';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
@@ -23,21 +22,19 @@ import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
+  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void>;
 };
 
 const FormSchema = z.object({
-  username: Username,
-  password: Password,
+  email: Email,
 });
 
-export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError }) => {
+export const RequestPasswordReset: FC<Props> = ({ className, classNames, onSubmit, onError }) => {
   const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
-      password: '',
+      email: '',
     },
   });
 
@@ -57,29 +54,15 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
             onSubmit={form.handleSubmit(handleSubmit, onError)}>
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('username.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('email.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="username" className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
+                <Input autoComplete="email" className={classNames?.input}
+                       placeholder={t('email.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('username.description')}</FormDescription>
-              <FormMessage className={classNames?.message}/>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
-              <FormControl className={classNames?.control}>
-                <Input autoComplete="current-password" className={classNames?.input} type="password"
-                       placeholder={t('password.placeholder')} {...field} />
-              </FormControl>
-              <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('email.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
@@ -89,7 +72,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
             {t(form.formState.errors.root.message || 'form.failed')}
           </FormMessage>
         )}
-        <Button disabled={form.formState.isSubmitting} type="submit">{t('login.submit')}</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">{t('requestPasswordReset.submit')}</Button>
       </form>
     </Form>
   );

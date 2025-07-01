@@ -23,6 +23,22 @@
       "maxLength": "Password cannot exceed {max} characters.",
       "invalid": "Password is invalid. It must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     },
+    "currentPassword": {
+      "label": "Current Password",
+      "placeholder": "Enter your current password",
+      "description": "Please enter your current password for verification.",
+      "required": "Please enter your current password.",
+      "invalid": "Current password is incorrect."
+    },
+    "newPassword": {
+      "label": "New Password",
+      "placeholder": "Enter your new password",
+      "description": "Please enter a strong password for security.",
+      "required": "Please enter a new password.",
+      "minLength": "New password must be at least {min} characters long.",
+      "maxLength": "New password cannot exceed {max} characters.",
+      "invalid": "New password is invalid. It must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+    },
     "confirmPassword": {
       "label": "Confirm Password",
       "placeholder": "Re-enter your password",
@@ -45,12 +61,30 @@
       "required": "You must accept the terms and conditions to continue."
     },
     "login": {
+      "submit": "Log In",
       "invalid": "Credentials are invalid. Please check your username and password."
     },
     "register": {
+      "submit": "Register",
       "success": "Registration successful! You can now log in.",
       "failed": "Registration failed. Please try again later.",
       "email": "Email address is already registered. Please use a different email."
+    },
+    "changePassword": {
+      "submit": "Change Password",
+      "success": "Password changed successfully!",
+      "failed": "Failed to change password. Please try again later.",
+      "currentMismatch": "Current password does not match our records."
+    },
+    "resetPassword": {
+      "submit": "Reset Password",
+      "success": "Password reset successfully!",
+      "failed": "Failed to set your new password. Please try again later."
+    },
+    "requestPasswordReset": {
+      "submit": "Request Reset Link",
+      "success": "Password reset link sent to your email.",
+      "failed": "Failed to send password reset link. Please try again later."
     }
   }
 }
