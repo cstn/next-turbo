@@ -11,7 +11,6 @@ const meta = {
   tags: ["autodocs"],
   args: {
     onError: fn(),
-    onSubmit: fn(),
     classNames: {
       root: "w-full max-w-sm",
       form: "flex flex-col",
@@ -23,4 +22,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    onSubmit: async (values) => {
+      console.log("Submitted values:", values);
+      return Promise.resolve();
+    }
+  }
+};
+
+export const Invalid: Story = {
+  args: {
+    onSubmit: () => {
+      throw new Error("credentials.invalid");
+    }
+  }
+}

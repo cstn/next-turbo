@@ -6,6 +6,7 @@
     "submit": "Senden",
     "reset": "Zurücksetzen",
     "required": "Pflichtfeld",
+    "failed": "Formularübermittlung fehlgeschlagen.",
     "email": {
       "label": "E-Mail",
       "placeholder": "Ihre E-Mail-Adresse",
@@ -34,6 +35,9 @@
       "minLength": "Der Benutzername muss mindestens {min} Zeichen lang sein.",
       "maxLength": "Der Benutzername darf nicht länger als {max} Zeichen sein.",
       "invalid": "Ihr Benutzername ist ungültig. Er darf nur Buchstaben, Zahlen, Punkt, Strich und Unterstriche enthalten."
+    },
+    "credentials": {
+      "invalid": "Die Anmeldeinformationen sind ungültig. Bitte überprüfen Sie Ihren Benutzernamen und Ihr Passwort."
     }
   }
 }

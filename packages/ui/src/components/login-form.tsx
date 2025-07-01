@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { FieldErrors, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import clsx from "clsx";
-import { Username } from "@cstn/validation/username";
-import { Password } from "@cstn/validation/password";
+import { FC } from 'react';
+import { FieldErrors, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import clsx from 'clsx';
+import { Username } from '@cstn/validation/username';
+import { Password } from '@cstn/validation/password';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
@@ -16,14 +16,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@cstn/ui/components/form";
-import { Button } from "@cstn/ui/components/button";
-import { Input } from "@cstn/ui/components/input";
+} from '@cstn/ui/components/form';
+import { Button } from '@cstn/ui/components/button';
+import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => void;
+  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void>;
 };
 
 const FormSchema = z.object({
@@ -31,19 +31,30 @@ const FormSchema = z.object({
   password: Password,
 });
 
-export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError}) => {
+export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError }) => {
   const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
   });
 
+  const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
+    try {
+      await onSubmit(values);
+    } catch (ex) {
+      form.setError('root', {
+        message: (ex as Error).message,
+      });
+    }
+  };
+
   return (
     <Form  {...form}>
-      <form className={clsx("w-full max-w-sm", className, classNames?.root)} onSubmit={form.handleSubmit(onSubmit, onError)}>
+      <form className={clsx('w-full max-w-sm', className, classNames?.root)}
+            onSubmit={form.handleSubmit(handleSubmit, onError)}>
         <FormField
           control={form.control}
           name="username"
@@ -51,10 +62,10 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError}
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('username.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
+                <Input autoComplete="username" className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('username.description')}</FormDescription>
-              <FormMessage className={classNames?.message} />
+              <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
         />
@@ -65,14 +76,20 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError}
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input className={classNames?.input} type="password" placeholder={t('password.placeholder')} {...field} />
+                <Input autoComplete="current-password" className={classNames?.input} type="password"
+                       placeholder={t('password.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
-              <FormMessage className={classNames?.message} />
+              <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        {form.formState.errors.root && (
+          <FormMessage className="my-4">
+            {t(form.formState.errors.root.message || 'form.failed')}
+          </FormMessage>
+        )}
+        <Button disabled={form.formState.isSubmitting} type="submit">Submit</Button>
       </form>
     </Form>
   );

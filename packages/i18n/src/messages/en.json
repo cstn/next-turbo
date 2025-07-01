@@ -6,6 +6,7 @@
     "submit": "Submit",
     "reset": "Reset",
     "required": "This field is required.",
+    "failed": "Form submission failed.",
     "email": {
       "label": "Email",
       "placeholder": "Enter your email address",
@@ -34,6 +35,9 @@
       "minLength": "Username must be at least 3 characters long.",
       "maxLength": "Username cannot exceed 15 characters.",
       "invalid": "Username can only contain letters, numbers, dots, hyphens and underscores."
+    },
+    "credentials": {
+      "invalid": "Credentials are invalid. Please check your username and password."
     }
   }
 }
