@@ -1,10 +1,11 @@
 {
   "extends": "@cstn/typescript-config/nextjs.json",
   "compilerOptions": {
+    "baseUrl": "src/",
     "paths": {
       "@/*": ["./*"],
-      "@cstn/ui/*": ["../../packages/ui/src/*"],
-      "@cstn/i18n/*": ["../../packages/i18/src/*"]
+      "@cstn/ui/*": ["../../../packages/ui/src/*"],
+      "@cstn/i18n/*": ["../../../packages/i18/src/*"]
     },
     "plugins": [
       {

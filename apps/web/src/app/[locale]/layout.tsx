@@ -7,7 +7,7 @@ import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import '@cstn/ui/styles/globals.css';
-import '../../styles/globals.css';
+import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 

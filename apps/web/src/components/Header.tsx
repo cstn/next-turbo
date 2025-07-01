@@ -29,7 +29,7 @@ const Header: FC = () => {
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <LanguageSwitch className="hidden sm:block" currentLocale={currentLocale}/>
+          <LanguageSwitch currentLocale={currentLocale}/>
 
           <NavigationMenuItem>
             <ModeToggle/>

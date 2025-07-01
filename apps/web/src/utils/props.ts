@@ -3,7 +3,6 @@ export type LocaleProps = {
     | Promise<{
     locale: string,
   }>
-    | { locale: string },
 };
 
 export type PropsWithStyle = {

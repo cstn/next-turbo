@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ConfigSchema = z.object({
   DEBUG: z.boolean().optional(),
   DEFAULT_LOCALE: z.string(),
