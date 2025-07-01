@@ -82,12 +82,9 @@
       "failed": "Failed to set your new password. Please try again later."
     },
     "requestPasswordReset": {
-      "label": "Request Password Reset",
-      "placeholder": "Enter your email to reset password",
-      "description": "Enter your email address to receive a password reset link.",
-      "required": "Please enter your email address.",
-      "invalid": "Please enter a valid email address.",
-      "emailNotFound": "Email address not found. Please check and try again."
+      "submit": "Request Reset Link",
+      "success": "Password reset link sent to your email.",
+      "failed": "Failed to send password reset link. Please try again later."
     }
   }
 }

@@ -84,8 +84,7 @@
     "requestPasswordReset": {
       "submit": "Passwort zurücksetzen anfordern",
       "success": "Ein Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet.",
-      "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut.",
-      "emailNotFound": "Die E-Mail-Adresse wurde nicht gefunden. Bitte überprüfen Sie Ihre Eingabe."
+      "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut."
     }
   }
 }
