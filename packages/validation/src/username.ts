@@ -13,7 +13,7 @@ export const ComplexUsername = Username
   .min(3, {
     message: "username.minLength",
   })
-  .max(20, {
+  .max(32, {
     message: "username.maxLength",
   })
   .regex(/^[a-zA-Z0-9_.-]+$/, {
