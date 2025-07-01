@@ -24,6 +24,9 @@
       "invalid": "Ihr Passwort ist ungültig. Es muss mindestens ein Großbuchstabe, ein Kleinbuchstabe, eine Zahl und ein Sonderzeichen enthalten."
     },
     "confirmPassword": {
+      "label": "Passwort bestätigen",
+      "placeholder": "Bestätigen Sie Ihr Passwort",
+      "description": "Bitte bestätigen Sie Ihr Passwort, um sicherzustellen, dass es übereinstimmt.",
       "match": "Die Passwörter stimmen nicht überein.",
       "required": "Bitte bestätigen Sie Ihr Passwort."
     },
@@ -36,8 +39,18 @@
       "maxLength": "Der Benutzername darf nicht länger als {max} Zeichen sein.",
       "invalid": "Ihr Benutzername ist ungültig. Er darf nur Buchstaben, Zahlen, Punkt, Strich und Unterstriche enthalten."
     },
-    "credentials": {
+    "acceptTerms": {
+      "label": "Ich akzeptiere die <terms>Allgemeinen Geschäftsbedingungen</terms> und die <privacy>Datenschutzrichtlinie</privacy>",
+      "description": "Bitte lesen und akzeptieren Sie die Allgemeinen Geschäftsbedingungen, um fortzufahren.",
+      "required": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren, um fortzufahren."
+    },
+    "login": {
       "invalid": "Die Anmeldeinformationen sind ungültig. Bitte überprüfen Sie Ihren Benutzernamen und Ihr Passwort."
+    },
+    "register": {
+      "success": "Registrierung erfolgreich! Sie können sich jetzt anmelden.",
+      "failed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+      "email": "Die E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie eine andere E-Mail"
     }
   }
 }

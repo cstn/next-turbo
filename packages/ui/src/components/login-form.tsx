@@ -23,7 +23,7 @@ import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void>;
+  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
 const FormSchema = z.object({
@@ -52,7 +52,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
   };
 
   return (
-    <Form  {...form}>
+    <Form {...form}>
       <form className={clsx('w-full max-w-sm', className, classNames?.root)}
             onSubmit={form.handleSubmit(handleSubmit, onError)}>
         <FormField

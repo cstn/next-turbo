@@ -10,7 +10,7 @@
     "email": {
       "label": "Email",
       "placeholder": "Enter your email address",
-      "description": "This is your primary email for notifications.",
+      "description": "This is your primary email address.",
       "required": "Please enter your email address.",
       "invalid": "Please enter a valid email address."
     },
@@ -24,6 +24,9 @@
       "invalid": "Password is invalid. It must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     },
     "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Re-enter your password",
+      "description": "Please confirm your password to ensure it matches.",
       "match": "Passwords do not match.",
       "required": "Please confirm your password."
     },
@@ -36,8 +39,18 @@
       "maxLength": "Username cannot exceed 15 characters.",
       "invalid": "Username can only contain letters, numbers, dots, hyphens and underscores."
     },
-    "credentials": {
+    "acceptTerms": {
+      "label": "I accept the <terms>terms and conditions</terms> and <privacy>privacy policy</privacy>",
+      "description": "Please read and accept the terms and conditions to proceed.",
+      "required": "You must accept the terms and conditions to continue."
+    },
+    "login": {
       "invalid": "Credentials are invalid. Please check your username and password."
+    },
+    "register": {
+      "success": "Registration successful! You can now log in.",
+      "failed": "Registration failed. Please try again later.",
+      "email": "Email address is already registered. Please use a different email."
     }
   }
 }

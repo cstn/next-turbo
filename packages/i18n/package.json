@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/hooks/*.(ts|json)"
+    "./hooks/*": "./src/hooks/*.ts",
+    "./messages/*": "./src/messages/*.json"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
