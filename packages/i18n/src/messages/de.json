@@ -23,6 +23,22 @@
       "maxLength": "Ihr Passwort darf nicht länger als {max} Zeichen sein.",
       "invalid": "Ihr Passwort ist ungültig. Es muss mindestens ein Großbuchstabe, ein Kleinbuchstabe, eine Zahl und ein Sonderzeichen enthalten."
     },
+    "currentPassword": {
+      "label": "Aktuelles Passwort",
+      "placeholder": "Ihr aktuelles Passwort",
+      "description": "Bitte geben Sie Ihr aktuelles Passwort zur Verifizierung ein.",
+      "required": "Bitte geben Sie Ihr aktuelles Passwort ein.",
+      "invalid": "Das aktuelle Passwort ist falsch."
+    },
+    "newPassword": {
+      "label": "Neues Passwort",
+      "placeholder": "Ihr neues Passwort",
+      "description": "Bitte geben Sie ein starkes Passwort für die Sicherheit ein.",
+      "required": "Bitte geben Sie ein neues Passwort ein.",
+      "minLength": "Das neue Passwort muss mindestens {min} Zeichen lang sein.",
+      "maxLength": "Das neue Passwort darf nicht länger als {max} Zeichen sein.",
+      "invalid": "Das neue Passwort ist ungültig. Es muss mindestens einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten."
+    },
     "confirmPassword": {
       "label": "Passwort bestätigen",
       "placeholder": "Bestätigen Sie Ihr Passwort",
@@ -51,6 +67,11 @@
       "success": "Registrierung erfolgreich! Sie können sich jetzt anmelden.",
       "failed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es später erneut.",
       "email": "Die E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie eine andere E-Mail"
+    },
+    "changePassword": {
+      "success": "Passwort erfolgreich geändert.",
+      "failed": "Passwortänderung fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+      "currentMismatch": "Das aktuelle Passwort ist falsch."
     }
   }
 }
