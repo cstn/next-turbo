@@ -61,17 +61,33 @@
       "required": "You must accept the terms and conditions to continue."
     },
     "login": {
+      "submit": "Log In",
       "invalid": "Credentials are invalid. Please check your username and password."
     },
     "register": {
+      "submit": "Register",
       "success": "Registration successful! You can now log in.",
       "failed": "Registration failed. Please try again later.",
       "email": "Email address is already registered. Please use a different email."
     },
     "changePassword": {
+      "submit": "Change Password",
       "success": "Password changed successfully!",
       "failed": "Failed to change password. Please try again later.",
       "currentMismatch": "Current password does not match our records."
+    },
+    "resetPassword": {
+      "submit": "Reset Password",
+      "success": "Password reset successfully!",
+      "failed": "Failed to set your new password. Please try again later."
+    },
+    "requestPasswordReset": {
+      "label": "Request Password Reset",
+      "placeholder": "Enter your email to reset password",
+      "description": "Enter your email address to receive a password reset link.",
+      "required": "Please enter your email address.",
+      "invalid": "Please enter a valid email address.",
+      "emailNotFound": "Email address not found. Please check and try again."
     }
   }
 }

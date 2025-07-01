@@ -147,7 +147,7 @@ export const RegisterForm: FC<Props> = ({ className, classNames, privacyUrl, ter
             {t(form.formState.errors.root.message || 'form.failed')}
           </FormMessage>
         )}
-        <Button disabled={form.formState.isSubmitting} type="submit">Submit</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">{t('register.submit')}</Button>
       </form>
     </Form>
   );

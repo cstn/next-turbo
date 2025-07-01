@@ -109,7 +109,7 @@ export const ChangePasswordForm: FC<Props> = ({ className, classNames, onSubmit,
             {t(form.formState.errors.root.message || 'form.failed')}
           </FormMessage>
         )}
-        <Button disabled={form.formState.isSubmitting} type="submit">Submit</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">{t('changePassword.submit')}</Button>
       </form>
     </Form>
   );

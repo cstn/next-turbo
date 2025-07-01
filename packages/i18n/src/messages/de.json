@@ -61,17 +61,31 @@
       "required": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren, um fortzufahren."
     },
     "login": {
+      "submit": "Anmelden",
       "invalid": "Die Anmeldeinformationen sind ungültig. Bitte überprüfen Sie Ihren Benutzernamen und Ihr Passwort."
     },
     "register": {
+      "submit": "Registrieren",
       "success": "Registrierung erfolgreich! Sie können sich jetzt anmelden.",
       "failed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es später erneut.",
       "email": "Die E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie eine andere E-Mail"
     },
     "changePassword": {
+      "submit": "Passwort ändern",
       "success": "Passwort erfolgreich geändert.",
       "failed": "Passwortänderung fehlgeschlagen. Bitte versuchen Sie es später erneut.",
       "currentMismatch": "Das aktuelle Passwort ist falsch."
+    },
+    "resetPassword": {
+      "submit": "Passwort zurücksetzen",
+      "success": "Passwort erfolgreich zurückgesetzt. Sie können sich jetzt mit Ihrem neuen Passwort anmelden.",
+      "failed": "Passwortzurücksetzung fehlgeschlagen. Bitte versuchen Sie es später erneut."
+    },
+    "requestPasswordReset": {
+      "submit": "Passwort zurücksetzen anfordern",
+      "success": "Ein Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet.",
+      "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+      "emailNotFound": "Die E-Mail-Adresse wurde nicht gefunden. Bitte überprüfen Sie Ihre Eingabe."
     }
   }
 }
