@@ -2,9 +2,9 @@ import { z } from "zod";
 
 export const Email = z
   .string({
-    invalid_type_error: "emailRequired",
-    required_error: "emailRequired",
+    invalid_type_error: "email.required",
+    required_error: "email.required",
   })
   .email({
-    message: "emailRequired",
+    message: "email.required",
   });

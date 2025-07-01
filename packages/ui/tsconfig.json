@@ -4,7 +4,8 @@
     "outDir": "dist",
     "types": ["vitest", "@testing-library/jest-dom"],
     "paths": {
-      "@cstn/ui/*": ["./src/*"]
+      "@cstn/ui/*": ["./src/*"],
+      "@cstn/i18n/*": ["../i18/src/*"]
     }
   },
   "include": [ "**/*.ts","src"],

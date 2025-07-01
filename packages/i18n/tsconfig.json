@@ -1,0 +1,8 @@
+{
+  "extends": "@cstn/typescript-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": [ "**/*.ts","src"],
+  "exclude": ["node_modules", "dist"]
+}

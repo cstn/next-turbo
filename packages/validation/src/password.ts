@@ -2,23 +2,22 @@ import { z } from "zod";
 
 export const Password = z
   .string({
-    invalid_type_error: "passwordRequired",
-    required_error: "passwordRequired",
+    invalid_type_error: "password.required",
+    required_error: "password.required",
+  })
+  .nonempty({
+    message: "password.required",
   })
   .min(1, {
-    message: "passwordRequired",
+    message: "password.required",
   });
 
-export const ComplexPassword = z
-  .string({
-    invalid_type_error: "passwordRequired",
-    required_error: "passwordRequired",
-  })
+export const ComplexPassword = Password
   .min(1, {
-    message: "passwordRequired",
+    message: "password.required",
   })
   .min(8, {
-    message: "passwordInvalid",
+    message: "password.invalid",
   })
   .refine(
     (value: string) => {
@@ -33,6 +32,6 @@ export const ComplexPassword = z
       return hasUpperCase && hasLowerCase && hasNumbers && hasNonAlphas;
     },
     {
-      message: "passwordInvalid",
+      message: "password.invalid",
     },
   );

@@ -15,7 +15,7 @@ describe("Credentials validator", () => {
       password: "validPassword",
     });
     expect(result.success).toBe(false);
-    expect(result?.error?.errors?.[0]?.message).toBe("usernameRequired");
+    expect(result?.error?.errors?.[0]?.message).toBe("username.required");
   });
 
   it("should reject missing password", () => {
@@ -23,15 +23,15 @@ describe("Credentials validator", () => {
       username: "validUsername",
     });
     expect(result.success).toBe(false);
-    expect(result?.error?.errors?.[0]?.message).toBe("passwordRequired");
+    expect(result?.error?.errors?.[0]?.message).toBe("password.required");
   });
 
   it("should reject empty credentials", () => {
     const result = Credentials.safeParse({});
     expect(result.success).toBe(false);
     expect(result.error?.errors).toHaveLength(2);
-    expect(result.error?.errors.map((e) => e.message)).toContain("usernameRequired");
-    expect(result.error?.errors.map((e) => e.message)).toContain("passwordRequired");
+    expect(result.error?.errors.map((e) => e.message)).toContain("username.required");
+    expect(result.error?.errors.map((e) => e.message)).toContain("password.required");
   });
 
   it("should reject invalid types", () => {
@@ -41,7 +41,7 @@ describe("Credentials validator", () => {
     });
     expect(result.success).toBe(false);
     expect(result.error?.errors).toHaveLength(2);
-    expect(result.error?.errors.map((e) => e.message)).toContain("usernameRequired");
-    expect(result.error?.errors?.map((e) => e.message)).toContain("passwordRequired");
+    expect(result.error?.errors.map((e) => e.message)).toContain("username.required");
+    expect(result.error?.errors?.map((e) => e.message)).toContain("password.required");
   });
 });

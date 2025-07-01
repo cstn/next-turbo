@@ -1,6 +1,7 @@
 {
   "name": "@cstn/commitlint-config",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "exports": {
     "./commitlint": "./commitlint.config.js"

@@ -16,7 +16,8 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@cstn/ui/*": ["../../packages/ui/src/*"]
+      "@cstn/ui/*": ["../../packages/ui/src/*"],
+      "@cstn/i18n/*": ["../../packages/i18n/src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
