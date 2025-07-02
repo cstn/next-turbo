@@ -22,29 +22,28 @@ const REGEX_CVC: Record<CreditCardType, RegExp> = {
   [CreditCardType.Amex]: /^[0-9]{4}$/,
 };
 
-export const CVCSchema = (type: CreditCardType) => z.string({
-  message: 'cvc.invalid',
-}).nonempty({
-  message: 'cvc.required',
-}).regex(REGEX_CVC[type], {
-  message: 'cvc.invalid',
-});
+export const CVCSchema = (type: CreditCardType) => z
+  .string({
+    required_error: 'cvc.required',
+    invalid_type_error: 'cvc.invalid',
+  }).regex(REGEX_CVC[type], {
+    message: 'cvc.invalid',
+  });
 
-export const CreditCardNumberSchema = (type: CreditCardType) => z.string({
-  message: 'creditCardNumber.invalid',
-}).nonempty({
-  message: 'creditCardNumber.required',
-}).refine(value => {
-  const regex = REGEX_NUMBERS[type];
-  return regex.test(value) && checkLuhn(value);
-}, {
-  message: 'creditCardNumber.invalid',
-});
+export const CreditCardNumberSchema = (type: CreditCardType) => z
+  .string({
+    required_error: 'creditCardNumber.required',
+    invalid_type_error: 'creditCardNumber.invalid',
+  }).refine(value => {
+    const regex = REGEX_NUMBERS[type];
+    return regex.test(value) && checkLuhn(value);
+  }, {
+    message: 'creditCardNumber.invalid',
+  });
 
 export const CreditCardExpirationDateSchema = z.string({
-  message: 'creditCardExpirationDate.invalid',
-}).nonempty({
-  message: 'creditCardExpirationDate.required',
+  required_error: 'creditCardExpirationDate.required',
+  invalid_type_error: 'creditCardExpirationDate.invalid',
 }).refine(value => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   if (!regex.test(value)) {
@@ -65,8 +64,9 @@ export const CreditCardExpirationDateSchema = z.string({
 
 export const CreditCardSchema = (type: CreditCardType) => z.object({
   accountHolderName: z.string({
-    message: 'creditCard.accountHolderName.invalid',
-  }).nonempty({
+    required_error: 'creditCard.accountHolderName.required',
+    invalid_type_error: 'creditCard.accountHolderName.invalid',
+  }).min(1, {
     message: 'creditCard.accountHolderName.required',
   }),
   number: CreditCardNumberSchema(type),

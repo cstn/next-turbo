@@ -5,9 +5,6 @@ export const PasswordSchema = z
     invalid_type_error: "password.required",
     required_error: "password.required",
   })
-  .nonempty({
-    message: "password.required",
-  })
   .min(1, {
     message: "password.required",
   });

@@ -5,7 +5,7 @@ export const UsernameSchema = z
     invalid_type_error: "username.required",
     required_error: "username.required",
   })
-  .nonempty({
+  .min(1, {
     message: "username.required",
   });
 

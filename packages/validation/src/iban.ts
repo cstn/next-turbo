@@ -62,9 +62,8 @@ const REGEX_PATTERNS: Record<string, RegExp> = {
 
 export const IBANSchema = z
   .string({
-    message: 'iban.invalid',
-  }).nonempty({
-    message: 'iban.required',
+    required_error: 'iban.required',
+    invalid_type_error: 'iban.invalid',
   })
   .refine((value) => {
     const country = Object.keys(REGEX_PATTERNS).find((code: string) => REGEX_PATTERNS[code]?.test(value));
@@ -80,9 +79,8 @@ export const IBANSchema = z
 
 export const LocaleIBANSchema = (country: string) => z
   .string({
-    message: 'iban.invalid',
-  }).nonempty({
-    message: 'iban.required',
+    required_error: 'iban.required',
+    invalid_type_error: 'iban.invalid',
   }).refine((value) => {
     const pattern = REGEX_PATTERNS[country.toUpperCase()];
 
