@@ -5,12 +5,12 @@ export const PasswordSchema = z
     invalid_type_error: "password.required",
     required_error: "password.required",
   })
-  .min(1, {
+  .nonempty({
     message: "password.required",
   });
 
 export const ComplexPassword = PasswordSchema
-  .min(1, {
+  .nonempty({
     message: "password.required",
   })
   .min(8, {

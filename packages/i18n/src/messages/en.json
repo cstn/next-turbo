@@ -14,6 +14,27 @@
       "required": "Please enter your email address.",
       "invalid": "Please enter a valid email address."
     },
+    "iban": {
+      "label": "IBAN",
+      "placeholder": "Enter your IBAN",
+      "description": "This is your International Bank Account Number.",
+      "required": "Please enter your IBAN.",
+      "invalid": "Please enter a valid IBAN."
+    },
+    "bic": {
+      "label": "BIC",
+      "placeholder": "Enter your BIC",
+      "description": "This is your Bank Identifier Code.",
+      "required": "Please enter your BIC.",
+      "invalid": "Please enter a valid BIC."
+    },
+    "accountHolder": {
+      "label": "Account Holder",
+      "placeholder": "Enter the account holder's name",
+      "description": "This is the name of the person or entity that holds the account.",
+      "required": "Please enter the account holder's name.",
+      "invalid": "Account holder's name is invalid."
+    },
     "password": {
       "label": "Password",
       "placeholder": "Enter your password",
@@ -85,6 +106,13 @@
       "submit": "Request Reset Link",
       "success": "Password reset link sent to your email.",
       "failed": "Failed to send password reset link. Please try again later."
+    },
+    "directDebit": {
+      "acceptTerms": "I accept the <terms>Direct Debit Terms and Conditions</terms>",
+      "description": "Direct Debit Authorization",
+      "submit": "Authorize Direct Debit",
+      "success": "Direct Debit authorization successful!",
+      "failed": "Failed to authorize Direct Debit. Please try again later."
     }
   }
 }

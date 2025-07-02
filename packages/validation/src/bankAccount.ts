@@ -4,11 +4,11 @@ import { BICSchema, LocaleBICSchema } from './bic';
 
 export const BankAccountSchema = z.object({
   iban: IBANSchema,
-  bic: BICSchema.optional(),
+  bic: BICSchema.or(z.literal('')),
   accountHolderName: z.string({
     required_error: 'bankAccount.accountHolderName.required',
     invalid_type_error: 'bankAccount.accountHolderName.invalid',
-  }).min(1, {
+  }).nonempty({
     message: 'bankAccount.accountHolderName.required',
   }),
 }).refine(({ iban, bic }) => {
@@ -25,11 +25,11 @@ export const BankAccountSchema = z.object({
 
 export const LocaleBankAccountSchema = (country: string) => z.object({
   iban: LocaleIBANSchema(country),
-  bic: LocaleBICSchema(country).optional(),
+  bic: z.optional(LocaleBICSchema(country)),
   accountHolderName: z.string({
     required_error: 'bankAccount.accountHolderName.required',
     invalid_type_error: 'bankAccount.accountHolderName.invalid',
-  }).min(1, {
+  }).nonempty({
     message: 'bankAccount.accountHolderName.required',
   })
 });

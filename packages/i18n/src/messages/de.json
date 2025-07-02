@@ -14,6 +14,27 @@
       "required": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
       "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
     },
+    "iban": {
+      "label": "IBAN",
+      "placeholder": "Ihre IBAN eingeben",
+      "description": "Dies ist Ihre Internationale Bankkontonummer.",
+      "required": "Bitte geben Sie Ihre IBAN ein.",
+      "invalid": "Bitte geben Sie eine gültige IBAN ein."
+    },
+    "bic": {
+      "label": "BIC",
+      "placeholder": "Ihre BIC eingeben",
+      "description": "Dies ist Ihr Bank Identifier Code.",
+      "required": "Bitte geben Sie Ihre BIC ein.",
+      "invalid": "Bitte geben Sie eine gültige BIC ein."
+    },
+    "accountHolder": {
+      "label": "Kontoinhaber",
+      "placeholder": "Name des Kontoinhabers",
+      "description": "Dies ist der Name der Person oder Organisation, die das Konto führt.",
+      "required": "Bitte geben Sie den Namen des Kontoinhabers ein.",
+      "invalid": "Der Name des Kontoinhabers ist ungültig."
+    },
     "password": {
       "label": "Passwort",
       "placeholder": "Ihr Passwort",

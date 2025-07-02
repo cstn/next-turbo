@@ -19,26 +19,29 @@ import { Button } from '@cstn/ui/components/button';
 import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
 import { BankAccountSchema } from '@cstn/validation/bankAccount';
+import { Checkbox } from '@cstn/ui/components/checkbox';
 
 type Props = PropsWithStyle & {
+  termsUrl: string;
   onError?: (errors: FieldErrors) => void;
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
-const FormSchema = BankAccountSchema.extend({
+const FormSchema = BankAccountSchema.innerType().extend({
   acceptTerms: z.boolean().refine(val => val, {
     message: 'acceptTerms.required',
   }),
 });
 
-export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError }) => {
+export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {
   const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       accountHolderName: '',
       iban: '',
-      bic: ''
+      bic: '',
+      acceptTerms: false,
     },
   });
 
@@ -61,11 +64,11 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
           name="accountHolderName"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('username.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('accountHolder.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="username" className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
+                <Input autoComplete="billing name" className={classNames?.input} placeholder={t('accountHolder.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('username.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('accountHolder.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
@@ -75,25 +78,51 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
           name="iban"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('iban.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="current-password" className={classNames?.input} placeholder={t('password.placeholder')} {...field} />
+                <Input autoComplete="off" className={classNames?.input} placeholder={t('iban.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('iban.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="iban"
+          name="bic"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('bic.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="current-password" className={classNames?.input} placeholder={t('password.placeholder')} {...field} />
+                <Input autoComplete="off" className={classNames?.input} placeholder={t('bic.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('bic.description')}</FormDescription>
+              <FormMessage className={classNames?.message}/>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="acceptTerms"
+          render={({ field }) => (
+            <FormItem className={classNames?.field}>
+              <FormControl className={classNames?.control}>
+                <FormLabel className="flex items-center space-x-2" htmlFor="acceptTerms">
+                  <Checkbox
+                    id="acceptTerms"
+                    className={clsx('h-4 w-4', classNames?.checkbox)}
+                    checked={field.value}
+                    onCheckedChange={(checked: boolean) => field.onChange(checked)}
+                  />
+                  <span className={classNames?.label}>
+                   {t.rich('directDebit.acceptTerms', {
+                     terms: (chunks) => (
+                       <a className="underline" href={termsUrl} rel="noreferrer" target="_blank">{chunks}</a>
+                     )
+                   })}
+                  </span>
+                </FormLabel>
+              </FormControl>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
@@ -103,7 +132,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
             {t(form.formState.errors.root.message || 'form.failed')}
           </FormMessage>
         )}
-        <Button disabled={form.formState.isSubmitting} type="submit">{t('login.submit')}</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">{t('directDebit.submit')}</Button>
       </form>
     </Form>
   );

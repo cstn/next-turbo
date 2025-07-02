@@ -66,7 +66,7 @@ export const CreditCardSchema = (type: CreditCardType) => z.object({
   accountHolderName: z.string({
     required_error: 'creditCard.accountHolderName.required',
     invalid_type_error: 'creditCard.accountHolderName.invalid',
-  }).min(1, {
+  }).nonempty({
     message: 'creditCard.accountHolderName.required',
   }),
   number: CreditCardNumberSchema(type),
