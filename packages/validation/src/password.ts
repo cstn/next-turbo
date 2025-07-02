@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Password = z
+export const PasswordSchema = z
   .string({
     invalid_type_error: "password.required",
     required_error: "password.required",
@@ -12,7 +12,7 @@ export const Password = z
     message: "password.required",
   });
 
-export const ComplexPassword = Password
+export const ComplexPassword = PasswordSchema
   .min(1, {
     message: "password.required",
   })

@@ -1,20 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { Password, ComplexPassword } from "./password";
+import { PasswordSchema, ComplexPassword } from "./password";
 
 describe("Password validator", () => {
   it("should accept valid password", () => {
-    const result = Password.safeParse("password123");
+    const result = PasswordSchema.safeParse("password123");
     expect(result.success).toBe(true);
   });
 
   it("should reject empty password", () => {
-    const result = Password.safeParse("");
+    const result = PasswordSchema.safeParse("");
     expect(result.success).toBe(false);
     expect(result?.error?.errors?.[0]?.message).toBe("password.required");
   });
 
   it("should reject undefined password", () => {
-    const result = Password.safeParse(undefined);
+    const result = PasswordSchema.safeParse(undefined);
     expect(result.success).toBe(false);
     expect(result?.error?.errors?.[0]?.message).toBe("password.required");
   });

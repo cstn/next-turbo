@@ -22,7 +22,7 @@ const REGEX_CVC: Record<CreditCardType, RegExp> = {
   [CreditCardType.Amex]: /^[0-9]{4}$/,
 };
 
-export const CVC = (type: CreditCardType) => z.string({
+export const CVCSchema = (type: CreditCardType) => z.string({
   message: 'cvc.invalid',
 }).nonempty({
   message: 'cvc.required',
@@ -30,7 +30,7 @@ export const CVC = (type: CreditCardType) => z.string({
   message: 'cvc.invalid',
 });
 
-export const CreditCardNumber = (type: CreditCardType) => z.string({
+export const CreditCardNumberSchema = (type: CreditCardType) => z.string({
   message: 'creditCardNumber.invalid',
 }).nonempty({
   message: 'creditCardNumber.required',
@@ -41,7 +41,7 @@ export const CreditCardNumber = (type: CreditCardType) => z.string({
   message: 'creditCardNumber.invalid',
 });
 
-export const CreditCardExpirationDate = z.string({
+export const CreditCardExpirationDateSchema = z.string({
   message: 'creditCardExpirationDate.invalid',
 }).nonempty({
   message: 'creditCardExpirationDate.required',
@@ -63,17 +63,17 @@ export const CreditCardExpirationDate = z.string({
   message: 'creditCardExpirationDate.invalid',
 });
 
-export const CreditCard = (type: CreditCardType) => z.object({
+export const CreditCardSchema = (type: CreditCardType) => z.object({
   accountHolderName: z.string({
     message: 'creditCard.accountHolderName.invalid',
   }).nonempty({
     message: 'creditCard.accountHolderName.required',
   }),
-  number: CreditCardNumber(type),
-  cvc: CVC(type),
-  expirationDate: CreditCardExpirationDate,
+  number: CreditCardNumberSchema(type),
+  cvc: CVCSchema(type),
+  expirationDate: CreditCardExpirationDateSchema,
 });
 
-export const Visa = CreditCard(CreditCardType.Visa);
-export const MasterCard = CreditCard(CreditCardType.Master);
-export const Amex = CreditCard(CreditCardType.Amex);
+export const VisaSchema = CreditCardSchema(CreditCardType.Visa);
+export const MasterCardSchema = CreditCardSchema(CreditCardType.Master);
+export const AmexSchema = CreditCardSchema(CreditCardType.Amex);

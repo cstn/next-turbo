@@ -5,7 +5,7 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import clsx from 'clsx';
-import { ComplexPassword, Password } from '@cstn/validation/password';
+import { ComplexPassword, PasswordSchema } from '@cstn/validation/password';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
@@ -26,7 +26,7 @@ type Props = PropsWithStyle & {
 };
 
 const FormSchema = z.object({
-  currentPassword: Password,
+  currentPassword: PasswordSchema,
   newPassword: ComplexPassword,
   confirmPassword: ComplexPassword,
 }).refine(({ newPassword, confirmPassword }) => newPassword === confirmPassword, {

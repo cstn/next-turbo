@@ -5,7 +5,7 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import clsx from 'clsx';
-import { Email } from '@cstn/validation/email';
+import { EmailSchema } from '@cstn/validation/email';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
@@ -26,7 +26,7 @@ type Props = PropsWithStyle & {
 };
 
 const FormSchema = z.object({
-  email: Email,
+  email: EmailSchema,
 });
 
 export const RequestPasswordReset: FC<Props> = ({ className, classNames, onSubmit, onError }) => {

@@ -5,7 +5,7 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import clsx from 'clsx';
-import { Email } from '@cstn/validation/email';
+import { EmailSchema } from '@cstn/validation/email';
 import { ComplexPassword } from '@cstn/validation/password';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
@@ -30,7 +30,7 @@ type Props = PropsWithStyle & {
 };
 
 const FormSchema = z.object({
-  email: Email,
+  email: EmailSchema,
   password: ComplexPassword,
   confirmPassword: ComplexPassword,
   acceptTerms: z.boolean().refine((val) => val, {

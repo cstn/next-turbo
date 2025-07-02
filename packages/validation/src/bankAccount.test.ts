@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BankAccount } from './bankAccount';
+import { BankAccountSchema } from './bankAccount';
 
 describe('Bank account Validation', () => {
   it('should accept a valid bank account', () => {
@@ -8,7 +8,7 @@ describe('Bank account Validation', () => {
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXXX',
     };
-    const result = BankAccount.safeParse(validAccount);
+    const result = BankAccountSchema.safeParse(validAccount);
 
     expect(result.success).toBeTruthy();
   });
@@ -19,7 +19,7 @@ describe('Bank account Validation', () => {
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXXX',
     };
-    const result = BankAccount.safeParse(invalidAccount);
+    const result = BankAccountSchema.safeParse(invalidAccount);
 
     expect(result.success).toBeFalsy();
     expect(result.error?.issues?.[0]?.message).toEqual('bankAccount.accountHolderName.required');
@@ -31,7 +31,7 @@ describe('Bank account Validation', () => {
       iban: 'DE13500105170648489890',
       bic: 'DEUTDEBBXXX',
     };
-    const result = BankAccount.safeParse(invalidAccount);
+    const result = BankAccountSchema.safeParse(invalidAccount);
 
     expect(result.success).toBeFalsy();
     expect(result.error?.issues?.[0]?.message).toEqual('iban.invalid');
@@ -43,7 +43,7 @@ describe('Bank account Validation', () => {
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXX',
     };
-    const result = BankAccount.safeParse(invalidAccount);
+    const result = BankAccountSchema.safeParse(invalidAccount);
 
     expect(result.success).toBeFalsy();
     expect(result.error?.issues?.[0]?.message).toEqual('bic.invalid');
@@ -55,7 +55,7 @@ describe('Bank account Validation', () => {
       iban: 'DE12500105170648489890',
       bic: 'DEUTFRBBXXX',
     };
-    const result = BankAccount.safeParse(invalidAccount);
+    const result = BankAccountSchema.safeParse(invalidAccount);
     expect(result.success).toBeFalsy();
     expect(result.error?.issues?.[0]?.message).toEqual('bankAccount.countryMismatch');
   });

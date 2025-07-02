@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { Username } from "./username";
-import { Password } from "./password";
+import { UsernameSchema } from "./username";
+import { PasswordSchema } from "./password";
 
-export const Credentials = z.object({
-  username: Username,
-  password: Password,
+export const CredentialsSchema = z.object({
+  username: UsernameSchema,
+  password: PasswordSchema,
 });

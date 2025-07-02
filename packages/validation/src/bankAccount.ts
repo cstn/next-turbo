@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { IBAN, IBANWithCountry } from './iban';
-import { BIC, BICWithCountry } from './bic';
+import { IBANSchema, LocaleIBANSchema } from './iban';
+import { BICSchema, LocaleBICSchema } from './bic';
 
-export const BankAccount = z.object({
-  iban: IBAN,
-  bic: BIC.optional(),
+export const BankAccountSchema = z.object({
+  iban: IBANSchema,
+  bic: BICSchema.optional(),
   accountHolderName: z.string({
     message: 'bankAccount.accountHolderName.invalid',
   }).nonempty({
@@ -16,14 +16,14 @@ export const BankAccount = z.object({
   }
   const countryCode = bic.slice(4, 6).toUpperCase();
 
-  return IBANWithCountry(countryCode).safeParse(iban).success;
+  return LocaleIBANSchema(countryCode).safeParse(iban).success;
 }, {
   message: 'bankAccount.countryMismatch',
 });
 
-export const BankAcountWithCountry = (country: string) => z.object({
-  iban: IBANWithCountry(country),
-  bic: BICWithCountry(country).optional(),
+export const LocaleBankAccountSchema = (country: string) => z.object({
+  iban: LocaleIBANSchema(country),
+  bic: LocaleBICSchema(country).optional(),
   accountHolderName: z.string({
     message: 'bankAccount.accountHolderName.invalid',
   }).nonempty({

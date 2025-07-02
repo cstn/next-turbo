@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { Credentials } from "./credentials";
+import { CredentialsSchema } from "./credentials";
 
 describe("Credentials validator", () => {
   it("should accept valid credentials", () => {
-    const result = Credentials.safeParse({
+    const result = CredentialsSchema.safeParse({
       username: "validUsername",
       password: "validPassword",
     });
@@ -11,7 +11,7 @@ describe("Credentials validator", () => {
   });
 
   it("should reject missing username", () => {
-    const result = Credentials.safeParse({
+    const result = CredentialsSchema.safeParse({
       password: "validPassword",
     });
     expect(result.success).toBe(false);
@@ -19,7 +19,7 @@ describe("Credentials validator", () => {
   });
 
   it("should reject missing password", () => {
-    const result = Credentials.safeParse({
+    const result = CredentialsSchema.safeParse({
       username: "validUsername",
     });
     expect(result.success).toBe(false);
@@ -27,7 +27,7 @@ describe("Credentials validator", () => {
   });
 
   it("should reject empty credentials", () => {
-    const result = Credentials.safeParse({});
+    const result = CredentialsSchema.safeParse({});
     expect(result.success).toBe(false);
     expect(result.error?.errors).toHaveLength(2);
     expect(result.error?.errors.map((e) => e.message)).toContain("username.required");
@@ -35,7 +35,7 @@ describe("Credentials validator", () => {
   });
 
   it("should reject invalid types", () => {
-    const result = Credentials.safeParse({
+    const result = CredentialsSchema.safeParse({
       username: 123,
       password: true,
     });

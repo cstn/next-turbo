@@ -60,7 +60,7 @@ const REGEX_PATTERNS: Record<string, RegExp> = {
   GB: /^GB\d{2}[A-Z]{4}\d{14}$/,
 };
 
-export const IBAN = z
+export const IBANSchema = z
   .string({
     message: 'iban.invalid',
   }).nonempty({
@@ -78,7 +78,7 @@ export const IBAN = z
     message: 'iban.invalid',
   });
 
-export const IBANWithCountry = (country: string) => z
+export const LocaleIBANSchema = (country: string) => z
   .string({
     message: 'iban.invalid',
   }).nonempty({

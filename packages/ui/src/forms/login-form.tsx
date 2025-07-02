@@ -5,8 +5,8 @@ import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import clsx from 'clsx';
-import { Username } from '@cstn/validation/username';
-import { Password } from '@cstn/validation/password';
+import { UsernameSchema } from '@cstn/validation/username';
+import { PasswordSchema } from '@cstn/validation/password';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
   Form,
@@ -27,8 +27,8 @@ type Props = PropsWithStyle & {
 };
 
 const FormSchema = z.object({
-  username: Username,
-  password: Password,
+  username: UsernameSchema,
+  password: PasswordSchema,
 });
 
 export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError }) => {

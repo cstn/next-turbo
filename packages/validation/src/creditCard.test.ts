@@ -1,32 +1,32 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest';
 import {
-  CVC,
-  CreditCardNumber,
-  CreditCardExpirationDate,
+  CVCSchema,
+  CreditCardNumberSchema,
+  CreditCardExpirationDateSchema,
   CreditCardType,
-  Visa,
-  MasterCard,
-  Amex,
+  VisaSchema,
+  MasterCardSchema,
+  AmexSchema,
 } from './creditCard';
 
 describe('Credit Card validation', () => {
   describe('CVC Validation', () => {
     it('should validate visa card CVC', () => {
-      const cvcSchema = CVC(CreditCardType.Visa);
+      const cvcSchema = CVCSchema(CreditCardType.Visa);
       expect(cvcSchema.safeParse('123').success).toBe(true);
       expect(cvcSchema.safeParse('12').success).toBe(false);
       expect(cvcSchema.safeParse('1234').success).toBe(false);
     });
 
     it('should validate master card CVC', () => {
-      const cvcSchema = CVC(CreditCardType.Master);
+      const cvcSchema = CVCSchema(CreditCardType.Master);
       expect(cvcSchema.safeParse('123').success).toBe(true);
       expect(cvcSchema.safeParse('12').success).toBe(false);
       expect(cvcSchema.safeParse('1234').success).toBe(false);
     });
 
     it('should validate Amex CVC', () => {
-      const cvcSchema = CVC(CreditCardType.Amex);
+      const cvcSchema = CVCSchema(CreditCardType.Amex);
       expect(cvcSchema.safeParse('1234').success).toBe(true);
       expect(cvcSchema.safeParse('123').success).toBe(false);
     });
@@ -34,19 +34,19 @@ describe('Credit Card validation', () => {
 
   describe('Credit Card Number Validation', () => {
     it('should validate Visa card numbers', () => {
-      const numberSchema = CreditCardNumber(CreditCardType.Visa);
+      const numberSchema = CreditCardNumberSchema(CreditCardType.Visa);
       expect(numberSchema.safeParse('4532015112830366').success).toBe(true);
       expect(numberSchema.safeParse('5532015112830366').success).toBe(false);
     });
 
     it('should validate MasterCard numbers', () => {
-      const numberSchema = CreditCardNumber(CreditCardType.Master);
+      const numberSchema = CreditCardNumberSchema(CreditCardType.Master);
       expect(numberSchema.safeParse('5555555555554444').success).toBe(true);
       expect(numberSchema.safeParse('4532015112830366').success).toBe(false);
     });
 
     it('should validate Amex numbers', () => {
-      const numberSchema = CreditCardNumber(CreditCardType.Amex);
+      const numberSchema = CreditCardNumberSchema(CreditCardType.Amex);
       expect(numberSchema.safeParse('378282246310005').success).toBe(true);
       expect(numberSchema.safeParse('4532015112830366').success).toBe(false);
     });
@@ -63,19 +63,19 @@ describe('Credit Card validation', () => {
     });
 
     it('should validate valid expiration dates', () => {
-      expect(CreditCardExpirationDate.safeParse('08/25').success).toBe(true);
-      expect(CreditCardExpirationDate.safeParse('12/26').success).toBe(true);
+      expect(CreditCardExpirationDateSchema.safeParse('08/25').success).toBe(true);
+      expect(CreditCardExpirationDateSchema.safeParse('12/26').success).toBe(true);
     });
 
     it('should reject expired dates', () => {
-      expect(CreditCardExpirationDate.safeParse('06/25').success).toBe(false);
-      expect(CreditCardExpirationDate.safeParse('12/24').success).toBe(false);
+      expect(CreditCardExpirationDateSchema.safeParse('06/25').success).toBe(false);
+      expect(CreditCardExpirationDateSchema.safeParse('12/24').success).toBe(false);
     });
 
     it('should reject invalid formats', () => {
-      expect(CreditCardExpirationDate.safeParse('13/25').success).toBe(false);
-      expect(CreditCardExpirationDate.safeParse('00/25').success).toBe(false);
-      expect(CreditCardExpirationDate.safeParse('1225').success).toBe(false);
+      expect(CreditCardExpirationDateSchema.safeParse('13/25').success).toBe(false);
+      expect(CreditCardExpirationDateSchema.safeParse('00/25').success).toBe(false);
+      expect(CreditCardExpirationDateSchema.safeParse('1225').success).toBe(false);
     });
   });
 
@@ -96,7 +96,7 @@ describe('Credit Card validation', () => {
         cvc: '123',
         expirationDate: '12/25',
       };
-      expect(Visa.safeParse(validCard).success).toBeFalsy();
+      expect(VisaSchema.safeParse(validCard).success).toBeFalsy();
     });
 
     it('should validate valid Visa card', () => {
@@ -106,7 +106,7 @@ describe('Credit Card validation', () => {
         cvc: '123',
         expirationDate: '12/25',
       };
-      expect(Visa.safeParse(validCard).success).toBe(true);
+      expect(VisaSchema.safeParse(validCard).success).toBe(true);
     });
 
     it('should validate valid MasterCard', () => {
@@ -116,7 +116,7 @@ describe('Credit Card validation', () => {
         cvc: '123',
         expirationDate: '12/25',
       };
-      expect(MasterCard.safeParse(validCard).success).toBe(true);
+      expect(MasterCardSchema.safeParse(validCard).success).toBe(true);
     });
 
     it('should validate valid Amex card', () => {
@@ -126,7 +126,7 @@ describe('Credit Card validation', () => {
         cvc: '1234',
         expirationDate: '12/25',
       };
-      expect(Amex.safeParse(validCard).success).toBe(true);
+      expect(AmexSchema.safeParse(validCard).success).toBe(true);
     });
   });
 });
