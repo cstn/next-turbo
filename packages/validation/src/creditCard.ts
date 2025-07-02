@@ -22,24 +22,36 @@ const REGEX_CVC: Record<CreditCardType, RegExp> = {
   [CreditCardType.Amex]: /^[0-9]{4}$/,
 };
 
-export const CVC = (type: CreditCardType) => z.string().regex(REGEX_CVC[type], {
+export const CVC = (type: CreditCardType) => z.string({
+  message: 'cvc.invalid',
+}).nonempty({
+  message: 'cvc.required',
+}).regex(REGEX_CVC[type], {
   message: 'cvc.invalid',
 });
 
-export const CreditCardNumber = (type: CreditCardType) => z.string().refine(value => {
+export const CreditCardNumber = (type: CreditCardType) => z.string({
+  message: 'creditCardNumber.invalid',
+}).nonempty({
+  message: 'creditCardNumber.required',
+}).refine(value => {
   const regex = REGEX_NUMBERS[type];
   return regex.test(value) && checkLuhn(value);
 }, {
   message: 'creditCardNumber.invalid',
 });
 
-export const CreditCardExpirationDate = z.string().refine(value => {
+export const CreditCardExpirationDate = z.string({
+  message: 'creditCardExpirationDate.invalid',
+}).nonempty({
+  message: 'creditCardExpirationDate.required',
+}).refine(value => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   if (!regex.test(value)) {
     return false;
   }
 
-  const [month, year] = value.split('/').map(Number);
+  const [ month, year ] = value.split('/').map(Number);
   if (month === undefined || year === undefined) {
     return false;
   }
@@ -51,7 +63,7 @@ export const CreditCardExpirationDate = z.string().refine(value => {
   message: 'creditCardExpirationDate.invalid',
 });
 
-export const CreditCard= (type: CreditCardType) => z.object({
+export const CreditCard = (type: CreditCardType) => z.object({
   number: CreditCardNumber(type),
   cvc: CVC(type),
   expirationDate: CreditCardExpirationDate,

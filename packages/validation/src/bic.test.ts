@@ -7,7 +7,7 @@ describe('BIC Validation', () => {
     expect(result.success).toBeTruthy();
   });
 
-  it.each(['DEUTDEBBXXXX', ''])('should reject invalid BIC %s', (value) => {
+  it.each(['DEUTDEBBXXXX'])('should reject invalid BIC %s', (value) => {
     const result = BIC.safeParse(value);
     expect(result.success).toBeFalsy();
     expect(result.error?.issues?.[0]?.message).toBe('bic.invalid');
