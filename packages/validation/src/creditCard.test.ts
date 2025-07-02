@@ -79,7 +79,7 @@ describe('Credit Card validation', () => {
     });
   });
 
-  describe('Complete Credit Card Schema Validation', () => {
+  describe('Credit Card Schema Validation', () => {
     beforeEach(() => {
       vi.useFakeTimers();
       vi.setSystemTime(new Date('2025-07-01'));
@@ -89,8 +89,19 @@ describe('Credit Card validation', () => {
       vi.useRealTimers();
     });
 
+    it('should reject missing account holder name', () => {
+      const validCard = {
+        accountHolderName: '',
+        number: '4012888888881881',
+        cvc: '123',
+        expirationDate: '12/25',
+      };
+      expect(Visa.safeParse(validCard).success).toBeFalsy();
+    });
+
     it('should validate valid Visa card', () => {
       const validCard = {
+        accountHolderName: 'John Doe',
         number: '4012888888881881',
         cvc: '123',
         expirationDate: '12/25',
@@ -100,6 +111,7 @@ describe('Credit Card validation', () => {
 
     it('should validate valid MasterCard', () => {
       const validCard = {
+        accountHolderName: 'John Doe',
         number: '5555555555554444',
         cvc: '123',
         expirationDate: '12/25',
@@ -109,6 +121,7 @@ describe('Credit Card validation', () => {
 
     it('should validate valid Amex card', () => {
       const validCard = {
+        accountHolderName: 'John Doe',
         number: '371449635398431',
         cvc: '1234',
         expirationDate: '12/25',

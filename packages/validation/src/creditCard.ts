@@ -64,6 +64,11 @@ export const CreditCardExpirationDate = z.string({
 });
 
 export const CreditCard = (type: CreditCardType) => z.object({
+  accountHolderName: z.string({
+    message: 'creditCard.accountHolderName.invalid',
+  }).nonempty({
+    message: 'creditCard.accountHolderName.required',
+  }),
   number: CreditCardNumber(type),
   cvc: CVC(type),
   expirationDate: CreditCardExpirationDate,
