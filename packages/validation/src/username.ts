@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Username = z
+export const UsernameSchema = z
   .string({
     invalid_type_error: "username.required",
     required_error: "username.required",
@@ -9,11 +9,11 @@ export const Username = z
     message: "username.required",
   });
 
-export const ComplexUsername = Username
+export const NewUsernameSchema = UsernameSchema
   .min(3, {
     message: "username.minLength",
   })
-  .max(20, {
+  .max(32, {
     message: "username.maxLength",
   })
   .regex(/^[a-zA-Z0-9_.-]+$/, {
