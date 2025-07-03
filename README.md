@@ -2,6 +2,9 @@
 
 > This is a demo project for a web application built with [Next.js](https://nextjs.org/) and [Turborepo](https://turborepo.com/).
 
+Visit the [Storybook](https://cstn.github.io/next-turbo/) to see the components in action.
+
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:
