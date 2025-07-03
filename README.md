@@ -26,7 +26,7 @@ This Turborepo includes the following packages/apps:
 
 ### Installation
 
-```shell script
+```shell
 git clone git@github.com:cstn/next-turbo-demo.git
 npm install
 ```
