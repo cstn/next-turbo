@@ -13,7 +13,7 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
-    "zod": "3.25.67"
+    "zod": "3.25.71"
   },
   "devDependencies": {
     "vitest": "3.2.4"
