@@ -1,17 +1,17 @@
-import { z } from 'zod';
+import * as z from 'zod/v4';
 import { IBANSchema, LocaleIBANSchema } from './iban';
 import { BICSchema, LocaleBICSchema } from './bic';
 
 export const BankAccountSchema = z.object({
   iban: IBANSchema,
-  bic: BICSchema.or(z.literal('')),
+  bic: BICSchema,
   accountHolderName: z.string({
-    required_error: 'accountHolder.required',
-    invalid_type_error: 'accountHolder.invalid',
+    error: 'accountHolder.required',
   }).nonempty({
-    message: 'accountHolder.required',
+    error: 'accountHolder.required',
   }),
 }).refine(({ iban, bic }) => {
+  console.log(iban, bic);
   if (!bic) {
     return true;
   }
@@ -19,7 +19,7 @@ export const BankAccountSchema = z.object({
 
   return LocaleIBANSchema(countryCode).safeParse(iban).success;
 }, {
-  message: 'bankAccount.countryMismatch',
+  error: 'bankAccount.countryMismatch',
   path: [ 'bic' ],
 });
 
@@ -27,9 +27,8 @@ export const LocaleBankAccountSchema = (country: string) => z.object({
   iban: LocaleIBANSchema(country),
   bic: z.optional(LocaleBICSchema(country)),
   accountHolderName: z.string({
-    required_error: 'accountHolder.required',
-    invalid_type_error: 'accountHolder.invalid',
+    error: 'accountHolder.required',
   }).nonempty({
-    message: 'accountHolder.required',
+    error: 'accountHolder.required',
   })
 });

@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import * as z from 'zod/v4';
 import clsx from 'clsx';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';
 import {
@@ -20,7 +20,6 @@ import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
 import { BankAccountSchema } from '@cstn/validation/bankAccount';
 import { Checkbox } from '@cstn/ui/components/checkbox';
-import { LocaleIBANSchema } from '@cstn/validation/iban';
 
 type Props = PropsWithStyle & {
   termsUrl: string;
@@ -28,20 +27,10 @@ type Props = PropsWithStyle & {
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
-const FormSchema = BankAccountSchema.innerType().extend({
+const FormSchema = BankAccountSchema.extend({
   acceptTerms: z.boolean().refine(val => val, {
     message: 'acceptTerms.required',
   }),
-}).refine(({ iban, bic }) => {
-  if (!bic) {
-    return true;
-  }
-  const countryCode = bic.slice(4, 6).toUpperCase();
-
-  return LocaleIBANSchema(countryCode).safeParse(iban).success;
-}, {
-  message: 'directDebit.countryMismatch',
-  path: [ 'bic' ],
 });
 
 export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {

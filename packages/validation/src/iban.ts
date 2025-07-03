@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as z from 'zod/v4';
 import isValidChecksum from './utils/checksum';
 
 const REGEX_PATTERNS: Record<string, RegExp> = {
@@ -62,8 +62,7 @@ const REGEX_PATTERNS: Record<string, RegExp> = {
 
 export const IBANSchema = z
   .string({
-    required_error: 'iban.required',
-    invalid_type_error: 'iban.invalid',
+    error: 'iban.required',
   })
   .refine((value) => {
     const country = Object.keys(REGEX_PATTERNS).find((code: string) => REGEX_PATTERNS[code]?.test(value));
@@ -74,13 +73,12 @@ export const IBANSchema = z
 
     return isValidChecksum(value);
   }, {
-    message: 'iban.invalid',
+    error: 'iban.invalid',
   });
 
 export const LocaleIBANSchema = (country: string) => z
   .string({
-    required_error: 'iban.required',
-    invalid_type_error: 'iban.invalid',
+    error: 'iban.required',
   }).refine((value) => {
     const pattern = REGEX_PATTERNS[country.toUpperCase()];
 
@@ -90,5 +88,5 @@ export const LocaleIBANSchema = (country: string) => z
 
     return isValidChecksum(value);
   }, {
-    message: 'iban.invalid',
+    error: 'iban.invalid',
   });

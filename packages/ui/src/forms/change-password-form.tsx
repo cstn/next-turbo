@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import * as z from 'zod/v4';
 import clsx from 'clsx';
 import { ComplexPassword, PasswordSchema } from '@cstn/validation/password';
 import { useFormTranslations } from '@cstn/i18n/hooks/useFormTranslations';

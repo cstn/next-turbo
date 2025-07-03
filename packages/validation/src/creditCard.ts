@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as z from 'zod/v4';
 import checkLuhn from './utils/luhn';
 
 export enum CreditCardType {
@@ -24,26 +24,23 @@ const REGEX_CVC: Record<CreditCardType, RegExp> = {
 
 export const CVCSchema = (type: CreditCardType) => z
   .string({
-    required_error: 'cvc.required',
-    invalid_type_error: 'cvc.invalid',
+    error: 'cvc.required',
   }).regex(REGEX_CVC[type], {
-    message: 'cvc.invalid',
+    error: 'cvc.invalid',
   });
 
 export const CreditCardNumberSchema = (type: CreditCardType) => z
   .string({
-    required_error: 'creditCardNumber.required',
-    invalid_type_error: 'creditCardNumber.invalid',
+    error: 'creditCardNumber.required',
   }).refine(value => {
     const regex = REGEX_NUMBERS[type];
     return regex.test(value) && checkLuhn(value);
   }, {
-    message: 'creditCardNumber.invalid',
+    error: 'creditCardNumber.invalid',
   });
 
 export const CreditCardExpirationDateSchema = z.string({
-  required_error: 'creditCardExpirationDate.required',
-  invalid_type_error: 'creditCardExpirationDate.invalid',
+  error: 'creditCardExpirationDate.required',
 }).refine(value => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   if (!regex.test(value)) {
@@ -59,15 +56,14 @@ export const CreditCardExpirationDateSchema = z.string({
 
   return (year > currentYear) || (year === currentYear && month >= currentMonth);
 }, {
-  message: 'creditCardExpirationDate.invalid',
+  error: 'creditCardExpirationDate.invalid',
 });
 
 export const CreditCardSchema = (type: CreditCardType) => z.object({
   accountHolderName: z.string({
-    required_error: 'creditCard.accountHolderName.required',
-    invalid_type_error: 'creditCard.accountHolderName.invalid',
+    error: 'creditCard.accountHolderName.required',
   }).nonempty({
-    message: 'creditCard.accountHolderName.required',
+    error: 'creditCard.accountHolderName.required',
   }),
   number: CreditCardNumberSchema(type),
   cvc: CVCSchema(type),
