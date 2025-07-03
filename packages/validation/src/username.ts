@@ -1,22 +1,21 @@
-import { z } from "zod";
+import * as z from 'zod/v4';
 
 export const UsernameSchema = z
   .string({
-    invalid_type_error: "username.required",
-    required_error: "username.required",
+    error: "username.required",
   })
   .nonempty({
-    message: "username.required",
+    error: "username.required",
   });
 
 export const NewUsernameSchema = UsernameSchema
   .min(3, {
-    message: "username.minLength",
+    error: "username.minLength",
   })
   .max(32, {
-    message: "username.maxLength",
+    error: "username.maxLength",
   })
   .regex(/^[a-zA-Z0-9_.-]+$/, {
-      message: "username.invalid",
+      error: "username.invalid",
     },
   );

@@ -1,20 +1,19 @@
-import { z } from "zod";
+import * as z from 'zod/v4';
 
 export const PasswordSchema = z
   .string({
-    invalid_type_error: "password.required",
-    required_error: "password.required",
+    error: "password.required",
   })
   .nonempty({
-    message: "password.required",
+    error: "password.required",
   });
 
 export const ComplexPassword = PasswordSchema
   .nonempty({
-    message: "password.required",
+    error: "password.required",
   })
   .min(8, {
-    message: "password.invalid",
+    error: "password.invalid",
   })
   .refine(
     (value: string) => {
@@ -29,6 +28,6 @@ export const ComplexPassword = PasswordSchema
       return hasUpperCase && hasLowerCase && hasNumbers && hasNonAlphas;
     },
     {
-      message: "password.invalid",
+      error: "password.invalid",
     },
   );
