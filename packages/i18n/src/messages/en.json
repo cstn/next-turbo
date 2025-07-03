@@ -112,7 +112,8 @@
       "description": "Direct Debit Authorization",
       "submit": "Authorize Direct Debit",
       "success": "Direct Debit authorization successful!",
-      "failed": "Failed to authorize Direct Debit. Please try again later."
+      "failed": "Failed to authorize Direct Debit. Please try again later.",
+      "countryMismatch": "The Bank Identifier Code (BIC) does not match the country of the IBAN."
     }
   }
 }

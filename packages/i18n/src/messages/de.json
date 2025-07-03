@@ -105,7 +105,8 @@
     "requestPasswordReset": {
       "submit": "Passwort zurücksetzen anfordern",
       "success": "Ein Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet.",
-      "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut."
+      "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+      "countryMismatch": "Der angegebene Bank Identifier Code (BIC) stimmt nicht mit dem Land der angegebenen IBAN überein. Bitte überprüfen Sie Ihre Eingaben."
     }
   }
 }

@@ -20,6 +20,7 @@ import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
 import { BankAccountSchema } from '@cstn/validation/bankAccount';
 import { Checkbox } from '@cstn/ui/components/checkbox';
+import { LocaleIBANSchema } from '@cstn/validation/iban';
 
 type Props = PropsWithStyle & {
   termsUrl: string;
@@ -31,6 +32,16 @@ const FormSchema = BankAccountSchema.innerType().extend({
   acceptTerms: z.boolean().refine(val => val, {
     message: 'acceptTerms.required',
   }),
+}).refine(({ iban, bic }) => {
+  if (!bic) {
+    return true;
+  }
+  const countryCode = bic.slice(4, 6).toUpperCase();
+
+  return LocaleIBANSchema(countryCode).safeParse(iban).success;
+}, {
+  message: 'directDebit.countryMismatch',
+  path: [ 'bic' ],
 });
 
 export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {

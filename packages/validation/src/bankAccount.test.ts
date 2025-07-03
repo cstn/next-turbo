@@ -22,7 +22,7 @@ describe('Bank account Validation', () => {
     const result = BankAccountSchema.safeParse(invalidAccount);
 
     expect(result.success).toBeFalsy();
-    expect(result.error?.issues?.[0]?.message).toEqual('bankAccount.accountHolderName.required');
+    expect(result.error?.issues?.[0]?.message).toEqual('accountHolder.required');
   });
 
   it('should reject a bank account with invalid IBAN', () => {
