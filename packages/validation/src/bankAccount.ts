@@ -10,8 +10,10 @@ export const BankAccountSchema = z.object({
   }).nonempty({
     error: 'accountHolder.required',
   }),
+  acceptTerms: z.boolean().refine(val => val, {
+    message: 'acceptTerms.required',
+  }),
 }).refine(({ iban, bic }) => {
-  console.log(iban, bic);
   if (!bic) {
     return true;
   }

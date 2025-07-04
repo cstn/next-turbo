@@ -27,11 +27,7 @@ type Props = PropsWithStyle & {
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
-const FormSchema = BankAccountSchema.extend({
-  acceptTerms: z.boolean().refine(val => val, {
-    message: 'acceptTerms.required',
-  }),
-});
+const FormSchema = BankAccountSchema;
 
 export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {
   const t = useFormTranslations();

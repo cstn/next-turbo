@@ -97,6 +97,18 @@ describe('Credit Card validation', () => {
           number: '4012888888881881',
           csc: '123',
           expirationDate: '12/25',
+          acceptTerms: true,
+        };
+        expect(VisaSchema.safeParse(validCard).success).toBeFalsy();
+      });
+
+      it('should reject missing acceptance of terms and conditions', () => {
+        const validCard = {
+          cardHolderName: 'John Doe',
+          number: '4012888888881881',
+          csc: '123',
+          expirationDate: '12/25',
+          acceptTerms: false,
         };
         expect(VisaSchema.safeParse(validCard).success).toBeFalsy();
       });
@@ -107,6 +119,7 @@ describe('Credit Card validation', () => {
           number: '4012888888881881',
           csc: '123',
           expirationDate: '12/25',
+          acceptTerms: true,
         };
         expect(VisaSchema.safeParse(validCard).success).toBe(true);
       });
@@ -119,6 +132,7 @@ describe('Credit Card validation', () => {
           number: '5555555555554444',
           csc: '123',
           expirationDate: '12/25',
+          acceptTerms: true,
         };
         expect(MasterCardSchema.safeParse(validCard).success).toBe(true);
       });
@@ -131,6 +145,7 @@ describe('Credit Card validation', () => {
           number: '371449635398431',
           csc: '1234',
           expirationDate: '12/25',
+          acceptTerms: true,
         };
         expect(AmexSchema.safeParse(validCard).success).toBe(true);
       });
@@ -144,6 +159,7 @@ describe('Credit Card validation', () => {
         number: '4012888888881881',
         csc: '123',
         expirationDate: '12/25',
+        acceptTerms: true,
       };
       expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
     });
@@ -154,6 +170,7 @@ describe('Credit Card validation', () => {
         number: '5555555555554444',
         csc: '123',
         expirationDate: '12/25',
+        acceptTerms: true,
       };
       expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
     });
@@ -164,6 +181,7 @@ describe('Credit Card validation', () => {
         number: '371449635398431',
         csc: '1234',
         expirationDate: '12/25',
+        acceptTerms: true,
       };
       expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
     });
@@ -178,6 +196,7 @@ describe('Credit Card validation', () => {
         number,
         csc: '123',
         expirationDate: '12/25',
+        acceptTerms: true,
       };
 
       const result = CreditCardSchema.safeParse(validCard);
@@ -191,6 +210,7 @@ describe('Credit Card validation', () => {
         number: '5555555555554444',
         csc: '1234',
         expirationDate: '12/25',
+        acceptTerms: true,
       };
 
       const result = CreditCardSchema.safeParse(validCard);

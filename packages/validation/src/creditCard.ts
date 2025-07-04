@@ -47,17 +47,17 @@ export const CreditCardExpirationDateSchema = z.string({
     return false;
   }
 
-  const [ month, year ] = value.split('/').map(Number);
-  if (month === undefined || year === undefined) {
-    return false;
-  }
-  const currentYear = new Date().getFullYear() % 100; // Get last two digits of the current year
-  const currentMonth = new Date().getMonth() + 1; // Months are zero-indexed
+    const [ month, year ] = value.split('/').map(Number);
+    if (month === undefined || year === undefined) {
+      return false;
+    }
+    const currentYear = new Date().getFullYear() % 100; // Get last two digits of the current year
+    const currentMonth = new Date().getMonth() + 1; // Months are zero-indexed
 
-  return (year > currentYear) || (year === currentYear && month >= currentMonth);
-}, {
-  error: 'creditCardExpiry.invalid',
-});
+    return (year > currentYear) || (year === currentYear && month >= currentMonth);
+  }, {
+    error: 'creditCardExpiry.invalid',
+  });
 
 export const CreditCardHolderNameSchema = z.string({
   error: 'cardHolder.required',
@@ -74,6 +74,9 @@ export const CreditCardSchemaByType = (type: CreditCardType) => z.object({
   number: CreditCardNumberSchema(type),
   csc: CSCSchema(type),
   expirationDate: CreditCardExpirationDateSchema,
+  acceptTerms: z.boolean().refine(val => val, {
+    message: 'acceptTerms.required',
+  }),
 });
 
 export const VisaSchema = CreditCardSchemaByType(CreditCardType.Visa);
@@ -90,12 +93,18 @@ export const CreditCardSchema = CreditCardSchemaByType(CreditCardType.Standard)
 
     return Boolean(type);
   }, {
-    message: 'creditCardNumber.invalid',
+    error: 'creditCardNumber.invalid',
+    path: [ 'number' ],
   }).refine(({ number, csc }) => {
     const types = [ CreditCardType.Master, CreditCardType.Visa, CreditCardType.Amex ];
-    const type = types.find(key => REGEX_NUMBERS[key as CreditCardType].test(number) && REGEX_CSC[key as CreditCardType].test(csc));
+    const type = types.find(key => REGEX_NUMBERS[key as CreditCardType].test(number));
 
-    return Boolean(type);
+    if (!type) {
+      return false;
+    }
+
+    return REGEX_CSC[type].test(csc);
   }, {
-    message: 'creditCardCSC.invalid',
+    error: 'creditCardCSC.invalid',
+    path: [ 'csc' ],
   });

@@ -27,11 +27,7 @@ type Props = PropsWithStyle & {
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
-const FormSchema = CreditCardSchema.extend({
-  acceptTerms: z.boolean().refine(val => val, {
-    message: 'acceptTerms.required',
-  }),
-});
+const FormSchema = CreditCardSchema;
 
 export const CreditCardForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {
   const t = useFormTranslations();
