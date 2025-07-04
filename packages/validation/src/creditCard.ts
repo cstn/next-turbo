@@ -15,18 +15,18 @@ const REGEX_NUMBERS: Record<CreditCardType, RegExp> = {
   [CreditCardType.Amex]: /^3\d{14}$/,
 };
 
-const REGEX_CVC: Record<CreditCardType, RegExp> = {
-  [CreditCardType.Standard]: /^[0-9]{3}$/,
+const REGEX_CSC: Record<CreditCardType, RegExp> = {
+  [CreditCardType.Standard]: /^[0-9]{3,4}$/,
   [CreditCardType.Visa]: /^[0-9]{3}$/,
   [CreditCardType.Master]: /^[0-9]{3}$/,
   [CreditCardType.Amex]: /^[0-9]{4}$/,
 };
 
-export const CVCSchema = (type: CreditCardType) => z
+export const CSCSchema = (type: CreditCardType) => z
   .string({
-    error: 'cvc.required',
-  }).regex(REGEX_CVC[type], {
-    error: 'cvc.invalid',
+    error: 'creditCardCSCc.required',
+  }).regex(REGEX_CSC[type], {
+    error: 'creditCardCSC.invalid',
   });
 
 export const CreditCardNumberSchema = (type: CreditCardType) => z
@@ -40,7 +40,7 @@ export const CreditCardNumberSchema = (type: CreditCardType) => z
   });
 
 export const CreditCardExpirationDateSchema = z.string({
-  error: 'creditCardExpirationDate.required',
+  error: 'creditCardExpiry.required',
 }).refine(value => {
   const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   if (!regex.test(value)) {
@@ -56,20 +56,46 @@ export const CreditCardExpirationDateSchema = z.string({
 
   return (year > currentYear) || (year === currentYear && month >= currentMonth);
 }, {
-  error: 'creditCardExpirationDate.invalid',
+  error: 'creditCardExpiry.invalid',
 });
 
-export const CreditCardSchema = (type: CreditCardType) => z.object({
-  accountHolderName: z.string({
-    error: 'creditCard.accountHolderName.required',
-  }).nonempty({
-    error: 'creditCard.accountHolderName.required',
-  }),
+export const CreditCardHolderNameSchema = z.string({
+  error: 'cardHolder.required',
+}).nonempty({
+  error: 'cardHolder.required',
+});
+
+/**
+ * Creates a credit card schema based on the type of credit card.
+ * @param type The type of credit card (Visa, MasterCard, Amex, or Standard).
+ */
+export const CreditCardSchemaByType = (type: CreditCardType) => z.object({
+  cardHolderName: CreditCardHolderNameSchema,
   number: CreditCardNumberSchema(type),
-  cvc: CVCSchema(type),
+  csc: CSCSchema(type),
   expirationDate: CreditCardExpirationDateSchema,
 });
 
-export const VisaSchema = CreditCardSchema(CreditCardType.Visa);
-export const MasterCardSchema = CreditCardSchema(CreditCardType.Master);
-export const AmexSchema = CreditCardSchema(CreditCardType.Amex);
+export const VisaSchema = CreditCardSchemaByType(CreditCardType.Visa);
+export const MasterCardSchema = CreditCardSchemaByType(CreditCardType.Master);
+export const AmexSchema = CreditCardSchemaByType(CreditCardType.Amex);
+
+/**
+ * Standard credit card schema that supports Visa, MasterCard, and Amex.
+ */
+export const CreditCardSchema = CreditCardSchemaByType(CreditCardType.Standard)
+  .refine(({ number }) => {
+    const types = [ CreditCardType.Master, CreditCardType.Visa, CreditCardType.Amex ];
+    const type = types.find(key => REGEX_NUMBERS[key as CreditCardType].test(number));
+
+    return Boolean(type);
+  }, {
+    message: 'creditCardNumber.invalid',
+  }).refine(({ number, csc }) => {
+    const types = [ CreditCardType.Master, CreditCardType.Visa, CreditCardType.Amex ];
+    const type = types.find(key => REGEX_NUMBERS[key as CreditCardType].test(number) && REGEX_CSC[key as CreditCardType].test(csc));
+
+    return Boolean(type);
+  }, {
+    message: 'creditCardCSC.invalid',
+  });

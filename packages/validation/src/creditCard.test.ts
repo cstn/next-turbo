@@ -1,34 +1,35 @@
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest';
 import {
-  CVCSchema,
+  CSCSchema,
   CreditCardNumberSchema,
   CreditCardExpirationDateSchema,
   CreditCardType,
   VisaSchema,
   MasterCardSchema,
   AmexSchema,
+  CreditCardSchema,
 } from './creditCard';
 
 describe('Credit Card validation', () => {
   describe('CVC Validation', () => {
     it('should validate visa card CVC', () => {
-      const cvcSchema = CVCSchema(CreditCardType.Visa);
-      expect(cvcSchema.safeParse('123').success).toBe(true);
-      expect(cvcSchema.safeParse('12').success).toBe(false);
-      expect(cvcSchema.safeParse('1234').success).toBe(false);
+      const cscSchema = CSCSchema(CreditCardType.Visa);
+      expect(cscSchema.safeParse('123').success).toBe(true);
+      expect(cscSchema.safeParse('12').success).toBe(false);
+      expect(cscSchema.safeParse('1234').success).toBe(false);
     });
 
     it('should validate master card CVC', () => {
-      const cvcSchema = CVCSchema(CreditCardType.Master);
-      expect(cvcSchema.safeParse('123').success).toBe(true);
-      expect(cvcSchema.safeParse('12').success).toBe(false);
-      expect(cvcSchema.safeParse('1234').success).toBe(false);
+      const cscSchema = CSCSchema(CreditCardType.Master);
+      expect(cscSchema.safeParse('123').success).toBe(true);
+      expect(cscSchema.safeParse('12').success).toBe(false);
+      expect(cscSchema.safeParse('1234').success).toBe(false);
     });
 
     it('should validate Amex CVC', () => {
-      const cvcSchema = CVCSchema(CreditCardType.Amex);
-      expect(cvcSchema.safeParse('1234').success).toBe(true);
-      expect(cvcSchema.safeParse('123').success).toBe(false);
+      const cscSchema = CSCSchema(CreditCardType.Amex);
+      expect(cscSchema.safeParse('1234').success).toBe(true);
+      expect(cscSchema.safeParse('123').success).toBe(false);
     });
   });
 
@@ -89,44 +90,113 @@ describe('Credit Card validation', () => {
       vi.useRealTimers();
     });
 
-    it('should reject missing account holder name', () => {
-      const validCard = {
-        accountHolderName: '',
-        number: '4012888888881881',
-        cvc: '123',
-        expirationDate: '12/25',
-      };
-      expect(VisaSchema.safeParse(validCard).success).toBeFalsy();
+    describe('Visa', () => {
+      it('should reject missing account holder name', () => {
+        const validCard = {
+          cardHolderName: '',
+          number: '4012888888881881',
+          csc: '123',
+          expirationDate: '12/25',
+        };
+        expect(VisaSchema.safeParse(validCard).success).toBeFalsy();
+      });
+
+      it('should validate valid Visa card', () => {
+        const validCard = {
+          cardHolderName: 'John Doe',
+          number: '4012888888881881',
+          csc: '123',
+          expirationDate: '12/25',
+        };
+        expect(VisaSchema.safeParse(validCard).success).toBe(true);
+      });
     });
 
+    describe('MasterCard', () => {
+      it('should validate valid MasterCard', () => {
+        const validCard = {
+          cardHolderName: 'John Doe',
+          number: '5555555555554444',
+          csc: '123',
+          expirationDate: '12/25',
+        };
+        expect(MasterCardSchema.safeParse(validCard).success).toBe(true);
+      });
+    });
+
+    describe('Amex', () => {
+      it('should validate valid Amex card', () => {
+        const validCard = {
+          cardHolderName: 'John Doe',
+          number: '371449635398431',
+          csc: '1234',
+          expirationDate: '12/25',
+        };
+        expect(AmexSchema.safeParse(validCard).success).toBe(true);
+      });
+    });
+  });
+
+  describe('Auto detected card type', () => {
     it('should validate valid Visa card', () => {
       const validCard = {
-        accountHolderName: 'John Doe',
+        cardHolderName: 'John Doe',
         number: '4012888888881881',
-        cvc: '123',
+        csc: '123',
         expirationDate: '12/25',
       };
-      expect(VisaSchema.safeParse(validCard).success).toBe(true);
+      expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
     });
 
     it('should validate valid MasterCard', () => {
       const validCard = {
-        accountHolderName: 'John Doe',
+        cardHolderName: 'John Doe',
         number: '5555555555554444',
-        cvc: '123',
+        csc: '123',
         expirationDate: '12/25',
       };
-      expect(MasterCardSchema.safeParse(validCard).success).toBe(true);
+      expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
     });
 
     it('should validate valid Amex card', () => {
       const validCard = {
-        accountHolderName: 'John Doe',
+        cardHolderName: 'John Doe',
         number: '371449635398431',
-        cvc: '1234',
+        csc: '1234',
         expirationDate: '12/25',
       };
-      expect(AmexSchema.safeParse(validCard).success).toBe(true);
+      expect(CreditCardSchema.safeParse(validCard).success).toBe(true);
+    });
+
+    it.each([
+      '',
+      '555555555555444',
+      '9555555555554444'
+    ])('should reject invalid credit card number "%s"', (number) => {
+      const validCard = {
+        cardHolderName: 'John Doe',
+        number,
+        csc: '123',
+        expirationDate: '12/25',
+      };
+
+      const result = CreditCardSchema.safeParse(validCard);
+      expect(result.success).toBeFalsy();
+      expect(result.error?.issues?.[0]?.message).toBe('creditCardNumber.invalid');
+    });
+
+    it('should reject invalid csc', () => {
+      const validCard = {
+        cardHolderName: 'John Doe',
+        number: '5555555555554444',
+        csc: '1234',
+        expirationDate: '12/25',
+      };
+
+      const result = CreditCardSchema.safeParse(validCard);
+      expect(result.success).toBeFalsy();
+      expect(result.error?.issues?.[0]?.message).toBe('creditCardCSC.invalid');
     });
   });
 });
+

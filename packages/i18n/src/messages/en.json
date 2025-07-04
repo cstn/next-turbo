@@ -35,6 +35,34 @@
       "required": "Please enter the account holder's name.",
       "invalid": "Account holder's name is invalid."
     },
+    "cardHolder": {
+      "label": "Card Holder",
+      "placeholder": "Enter the card holder's name",
+      "description": "This is the name of the person on the card.",
+      "required": "Please enter the card holder's name.",
+      "invalid": "Card holder's name is invalid."
+    },
+    "creditCardNumber": {
+      "label": "Credit Card Number",
+      "placeholder": "Enter your credit card number",
+      "description": "This is your credit card number.",
+      "required": "Please enter your credit card number.",
+      "invalid": "Please enter a valid credit card number."
+    },
+    "creditCardExpiry": {
+      "label": "Credit Card Expiry",
+      "placeholder": "MM/YY",
+      "description": "This is the expiration date of your credit card.",
+      "required": "Please enter the credit card expiry date.",
+      "invalid": "Please enter a valid expiry date in MM/YY format."
+    },
+    "creditCardCSC": {
+      "label": "CSC",
+      "placeholder": "",
+      "description": "This is the Card Security Code on your credit card.",
+      "required": "Please enter your credit card CSC.",
+      "invalid": "Please enter a valid CSC."
+    },
     "password": {
       "label": "Password",
       "placeholder": "Enter your password",
@@ -114,6 +142,13 @@
       "success": "Direct Debit authorization successful!",
       "failed": "Failed to authorize Direct Debit. Please try again later.",
       "countryMismatch": "The Bank Identifier Code (BIC) does not match the country of the IBAN."
+    },
+    "creditCard": {
+      "acceptTerms": "I accept the <terms>Credit Card Terms and Conditions</terms>",
+      "description": "Credit Card Authorization",
+      "submit": "Authorize Credit Card",
+      "success": "Credit Card authorization successful!",
+      "failed": "Failed to authorize Credit Card. Please try again later."
     }
   }
 }
