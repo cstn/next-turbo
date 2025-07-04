@@ -17,8 +17,8 @@ import {
   FormMessage,
 } from '@cstn/ui/components/form';
 import { Button } from '@cstn/ui/components/button';
-import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
+import { Password } from '@cstn/ui/components/password';
 
 type Props = PropsWithStyle & {
   token: string;
@@ -74,7 +74,7 @@ export const ResetPasswordForm: FC<Props> = ({ className, classNames, token, onS
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('newPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('newPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('newPassword.description')}</FormDescription>
@@ -89,7 +89,7 @@ export const ResetPasswordForm: FC<Props> = ({ className, classNames, token, onS
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('confirmPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('confirmPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('confirmPassword.description')}</FormDescription>

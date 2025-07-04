@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from '@cstn/ui/components/form';
 import { Button } from '@cstn/ui/components/button';
-import { Input } from '@cstn/ui/components/input';
+import { Password } from '@cstn/ui/components/password';
 import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
@@ -66,7 +66,7 @@ export const ChangePasswordForm: FC<Props> = ({ className, classNames, onSubmit,
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('currentPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="current-password" className={classNames?.input} type="password"
+                <Password autoComplete="current-password" className={classNames?.input}
                        placeholder={t('currentPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('currentPassword.description')}</FormDescription>
@@ -81,7 +81,7 @@ export const ChangePasswordForm: FC<Props> = ({ className, classNames, onSubmit,
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('newPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('newPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('newPassword.description')}</FormDescription>
@@ -96,7 +96,7 @@ export const ChangePasswordForm: FC<Props> = ({ className, classNames, onSubmit,
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('confirmPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('confirmPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('confirmPassword.description')}</FormDescription>

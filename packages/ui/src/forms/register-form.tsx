@@ -21,6 +21,7 @@ import { Button } from '@cstn/ui/components/button';
 import { Input } from '@cstn/ui/components/input';
 import { Checkbox } from '@cstn/ui/components/checkbox';
 import { PropsWithStyle } from '@cstn/ui/props';
+import { Password } from '@cstn/ui/components/password';
 
 type Props = PropsWithStyle & {
   privacyUrl: string;
@@ -89,7 +90,7 @@ export const RegisterForm: FC<Props> = ({ className, classNames, privacyUrl, ter
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('password.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
@@ -104,7 +105,7 @@ export const RegisterForm: FC<Props> = ({ className, classNames, privacyUrl, ter
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('confirmPassword.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="new-password" className={classNames?.input} type="password"
+                <Password autoComplete="new-password" className={classNames?.input}
                        placeholder={t('confirmPassword.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('confirmPassword.description')}</FormDescription>

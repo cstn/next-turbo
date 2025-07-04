@@ -20,8 +20,12 @@ import {
 import { Button } from '@cstn/ui/components/button';
 import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
+import { Password } from '@cstn/ui/components/password';
 
 type Props = PropsWithStyle & {
+  defaultValues?: {
+    username?: string;
+  };
   onError?: (errors: FieldErrors) => void;
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
@@ -31,12 +35,12 @@ const FormSchema = z.object({
   password: PasswordSchema,
 });
 
-export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError }) => {
+export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onSubmit, onError }) => {
   const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
+      username: defaultValues?.username ||'',
       password: '',
     },
   });
@@ -76,7 +80,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, onSubmit, onError 
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="current-password" className={classNames?.input} type="password"
+                <Password autoComplete="current-password" className={classNames?.input}
                        placeholder={t('password.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>

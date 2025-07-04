@@ -33,6 +33,16 @@ export const Default: Story = {
   }
 };
 
+export const Required: Story = {
+  args: {
+    onSubmit: fn(),
+  },
+  play: async ({ canvas, userEvent }) => {
+    const button = await canvas.findByRole("button");
+    await userEvent.click(button);
+  },
+};
+
 export const Failed: Story = {
   args: {
     onSubmit: (values) => {
