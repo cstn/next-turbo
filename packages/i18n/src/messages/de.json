@@ -35,6 +35,34 @@
       "required": "Bitte geben Sie den Namen des Kontoinhabers ein.",
       "invalid": "Der Name des Kontoinhabers ist ungültig."
     },
+    "cardHolder": {
+      "label": "Karteninhaber",
+      "placeholder": "Name des Karteninhabers",
+      "description": "Dies ist der Name der Person auf der Karte.",
+      "required": "Bitte geben Sie den Namen des Karteninhabers ein.",
+      "invalid": "Der Name des Karteninhabers ist ungültig."
+    },
+    "creditCardNumber": {
+      "label": "Kreditkartennummer",
+      "placeholder": "Ihre Kreditkartennummer",
+      "description": "Dies ist Ihre Kreditkartennummer.",
+      "required": "Bitte geben Sie Ihre Kreditkartennummer ein.",
+      "invalid": "Bitte geben Sie eine gültige Kreditkartennummer ein."
+    },
+    "creditCardExpiry": {
+      "label": "Kreditkartenablauf",
+      "placeholder": "MM/JJ",
+      "description": "Dies ist das Ablaufdatum Ihrer Kreditkarte.",
+      "required": "Bitte geben Sie das Ablaufdatum der Kreditkarte ein.",
+      "invalid": "Bitte geben Sie ein gültiges Ablaufdatum im Format MM/JJ ein."
+    },
+    "creditCardCSC": {
+      "label": "CVC",
+      "placeholder": "",
+      "description": "Dies ist der Sicherheitscode auf der Rückseite Ihrer Kreditkarte.",
+      "required": "Bitte geben Sie den CVC-Code ein.",
+      "invalid": "Bitte geben Sie einen gültigen CVC-Code ein."
+    },
     "password": {
       "label": "Passwort",
       "placeholder": "Ihr Passwort",
@@ -107,6 +135,13 @@
       "success": "Ein Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet.",
       "failed": "Anfrage zum Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es später erneut.",
       "countryMismatch": "Der angegebene Bank Identifier Code (BIC) stimmt nicht mit dem Land der angegebenen IBAN überein. Bitte überprüfen Sie Ihre Eingaben."
+    },
+    "creditCard": {
+      "acceptTerms": "Ich akzeptiere die <terms>Allgemeinen Geschäftsbedingungen für Kreditkartenzahlungen</terms>",
+      "description": "Kreditkartenzahlung Autorisierung",
+      "submit": "Kreditkarte autorisieren",
+      "success": "Kreditkartenautorisierung erfolgreich!",
+      "failed": "Autorisierung der Kreditkarte fehlgeschlagen. Bitte versuchen Sie es später erneut."
     }
   }
 }

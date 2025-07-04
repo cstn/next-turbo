@@ -18,25 +18,26 @@ import {
 import { Button } from '@cstn/ui/components/button';
 import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
-import { BankAccountSchema } from '@cstn/validation/bankAccount';
+import { CreditCardSchema } from '@cstn/validation/creditCard';
 import { Checkbox } from '@cstn/ui/components/checkbox';
 
 type Props = PropsWithStyle & {
-  termsUrl: string;
+  termsUrl: string,
   onError?: (errors: FieldErrors) => void;
   onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
-const FormSchema = BankAccountSchema;
+const FormSchema = CreditCardSchema;
 
-export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {
+export const CreditCardForm: FC<Props> = ({ className, classNames, termsUrl, onSubmit, onError }) => {
   const t = useFormTranslations();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      accountHolderName: '',
-      iban: '',
-      bic: '',
+      cardHolderName: '',
+      number: '',
+      csc: '',
+      expirationDate: '',
       acceptTerms: false,
     },
   });
@@ -57,42 +58,56 @@ export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, on
             onSubmit={form.handleSubmit(handleSubmit, onError)}>
         <FormField
           control={form.control}
-          name="accountHolderName"
+          name="cardHolderName"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('accountHolder.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('cardHolder.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="billing name" className={classNames?.input} placeholder={t('accountHolder.placeholder')} {...field} />
+                <Input autoComplete="billing cc-name" className={classNames?.input} placeholder={t('cardHolder.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('accountHolder.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('cardHolder.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="iban"
+          name="number"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('iban.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('creditCardNumber.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="off" className={classNames?.input} placeholder={t('iban.placeholder')} {...field} />
+                <Input autoComplete="billing cc-number" className={classNames?.input} placeholder={t('creditCardNumber.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('iban.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('creditCardNumber.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="bic"
+          name="csc"
           render={({ field }) => (
             <FormItem className={classNames?.field}>
-              <FormLabel className={classNames?.label}>{t('bic.label')}</FormLabel>
+              <FormLabel className={classNames?.label}>{t('creditCardCSC.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="off" className={classNames?.input} placeholder={t('bic.placeholder')} {...field} />
+                <Input autoComplete="billing cc-csc" className={classNames?.input} placeholder={t('creditCardCSC.placeholder')} {...field} />
               </FormControl>
-              <FormDescription className={classNames?.description}>{t('bic.description')}</FormDescription>
+              <FormDescription className={classNames?.description}>{t('creditCardCSC.description')}</FormDescription>
+              <FormMessage className={classNames?.message}/>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="expirationDate"
+          render={({ field }) => (
+            <FormItem className={classNames?.field}>
+              <FormLabel className={classNames?.label}>{t('creditCardExpiry.label')}</FormLabel>
+              <FormControl className={classNames?.control}>
+                <Input autoComplete="billing cc-exp" className={classNames?.input} placeholder={t('creditCardExpiry.placeholder')} {...field} />
+              </FormControl>
+              <FormDescription className={classNames?.description}>{t('creditCardExpiry.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
             </FormItem>
           )}
@@ -111,7 +126,7 @@ export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, on
                     onCheckedChange={(checked: boolean) => field.onChange(checked)}
                   />
                   <span className={classNames?.label}>
-                   {t.rich('directDebit.acceptTerms', {
+                   {t.rich('creditCard.acceptTerms', {
                      terms: (chunks) => (
                        <a className="underline" href={termsUrl} rel="noreferrer" target="_blank">{chunks}</a>
                      )
@@ -128,7 +143,7 @@ export const DirectDebitForm: FC<Props> = ({ className, classNames, termsUrl, on
             {t(form.formState.errors.root.message || 'form.failed')}
           </FormMessage>
         )}
-        <Button disabled={form.formState.isSubmitting} type="submit">{t('directDebit.submit')}</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">{t('creditCard.submit')}</Button>
       </form>
     </Form>
   );

@@ -7,10 +7,24 @@ describe('Bank account Validation', () => {
       accountHolderName: 'Carsten Stein',
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXXX',
+      acceptTerms: true,
     };
     const result = BankAccountSchema.safeParse(validAccount);
 
     expect(result.success).toBeTruthy();
+  });
+
+  it('should reject a valid bank without accepting the terms and conditions', () => {
+    const validAccount = {
+      accountHolderName: 'Carsten Stein',
+      iban: 'DE12500105170648489890',
+      bic: 'DEUTDEBBXXX',
+      acceptTerms: false,
+    };
+    const result = BankAccountSchema.safeParse(validAccount);
+
+    expect(result.success).toBeFalsy();
+    expect(result.error?.issues?.[0]?.message).toEqual('acceptTerms.required');
   });
 
   it('should reject a bank account without holder name', () => {
@@ -18,6 +32,7 @@ describe('Bank account Validation', () => {
       accountHolderName: '',
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXXX',
+      acceptTerms: true,
     };
     const result = BankAccountSchema.safeParse(invalidAccount);
 
@@ -30,6 +45,7 @@ describe('Bank account Validation', () => {
       accountHolderName: 'Carsten Stein',
       iban: 'DE13500105170648489890',
       bic: 'DEUTDEBBXXX',
+      acceptTerms: true,
     };
     const result = BankAccountSchema.safeParse(invalidAccount);
 
@@ -42,6 +58,7 @@ describe('Bank account Validation', () => {
       accountHolderName: 'Carsten Stein',
       iban: 'DE12500105170648489890',
       bic: 'DEUTDEBBXX',
+      acceptTerms: true,
     };
     const result = BankAccountSchema.safeParse(invalidAccount);
 
@@ -54,6 +71,7 @@ describe('Bank account Validation', () => {
       accountHolderName: 'Carsten Stein',
       iban: 'DE12500105170648489890',
       bic: 'DEUTFRBBXXX',
+      acceptTerms: true,
     };
     const result = BankAccountSchema.safeParse(invalidAccount);
     expect(result.success).toBeFalsy();
