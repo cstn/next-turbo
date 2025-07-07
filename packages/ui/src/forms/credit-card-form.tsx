@@ -20,6 +20,7 @@ import { Input } from '@cstn/ui/components/input';
 import { PropsWithStyle } from '@cstn/ui/props';
 import { CreditCardSchema } from '@cstn/validation/creditCard';
 import { Checkbox } from '@cstn/ui/components/checkbox';
+import { ExpiryDate } from '@cstn/ui/components/expiry-date';
 
 type Props = PropsWithStyle & {
   termsUrl: string,
@@ -105,7 +106,7 @@ export const CreditCardForm: FC<Props> = ({ className, classNames, termsUrl, onS
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('creditCardExpiry.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="billing cc-exp" className={classNames?.input} placeholder={t('creditCardExpiry.placeholder')} {...field} />
+                <ExpiryDate autoComplete="billing cc-exp" className={classNames?.input} placeholder={t('creditCardExpiry.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('creditCardExpiry.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
