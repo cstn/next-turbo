@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 type Props = PropsWithChildren & LocaleProps;
 
 export const metadata: Metadata = {
-  title: 'Next.js App',
+  title: 'UI Demo App',
   description: 'Next.js App with i18n support',
 };
 

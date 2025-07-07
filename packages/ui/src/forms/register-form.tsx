@@ -27,7 +27,7 @@ type Props = PropsWithStyle & {
   privacyUrl: string;
   termsUrl: string;
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void>;
+  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
 const FormSchema = z.object({

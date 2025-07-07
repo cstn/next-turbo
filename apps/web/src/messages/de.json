@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "login": "Anmelden",
+    "register": "Registrieren"
+  },
+  "footer": {
+    "copyright": "© {year} Carsten Stein. Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen",
+    "help": "Hilfe"
+  },
+  "login": {
+    "title": "Anmelden",
+    "forgotPassword": "Passwort vergessen?",
+    "register": "Noch kein Konto? Registrieren Sie sich <link>hier</link>."
+  },
+  "register": {
+    "title": "Registrieren",
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto? Melden Sie sich <link>hier</link> an."
+  },
+  "requestPassword": {
+    "title": "Passwort zurücksetzen anfordern",
+    "description": "Geben Sie Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen des Passworts zu erhalten."
+  }
+}

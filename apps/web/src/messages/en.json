@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register"
+  },
+  "footer": {
+    "copyright": "© {year} Carsten Stein. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "help": "Help"
+  },
+  "login": {
+    "title": "Login",
+    "forgotPassword": "Forgot Password?",
+    "register": "Don't have an account? Register <link>here</link>."
+  },
+  "register": {
+    "title": "Register",
+    "alreadyHaveAccount": "Already have an account? Login <link>here</link>."
+  },
+  "requestPassword": {
+    "title": "Request Password Reset",
+    "description": "Enter your email address to receive a password reset link."
+  }
+}
