@@ -15,7 +15,7 @@ const LanguageSwitch: FC<Props> = ({ className, currentLocale }) => {
 
   return (
     <NavigationMenuItem className={className}>
-      <NavigationMenuTrigger className="uppercase">{currentLocale}</NavigationMenuTrigger>
+      <NavigationMenuTrigger className="uppercase font-bold">{currentLocale}</NavigationMenuTrigger>
       <NavigationMenuContent>
         <ul>
           {config.AVAILABLE_LOCALES.map((locale: string) => (

@@ -4,25 +4,35 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "login": "Anmelden",
-    "register": "Registrieren"
+    "register": "Registrieren",
+    "logout": "Abmelden"
   },
   "footer": {
     "copyright": "© {year} Carsten Stein. Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
     "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen",
     "help": "Hilfe"
   },
+  "error": {
+    "headline": "Entschuldigung",
+    "subline": "Es ist ein Fehler aufgetreten",
+    "home": "Zur Startseite",
+    "retry": "Erneut versuchen"
+  },
   "login": {
-    "title": "Anmelden",
+    "headline": "Anmelden",
+    "intro": "Sie können den Demo-Zugang demo / Test123 verwenden.",
     "forgotPassword": "Passwort vergessen?",
-    "register": "Noch kein Konto? Registrieren Sie sich <link>hier</link>."
+    "register": "Noch kein Konto? Registrieren Sie sich <link>hier</link>.",
+    "CredentialsSignin": "Benutzerkennung oder Passwort falsch"
   },
   "register": {
-    "title": "Registrieren",
+    "headline": "Registrieren",
     "alreadyHaveAccount": "Haben Sie bereits ein Konto? Melden Sie sich <link>hier</link> an."
   },
   "requestPassword": {
-    "title": "Passwort zurücksetzen anfordern",
-    "description": "Geben Sie Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen des Passworts zu erhalten."
+    "headline": "Passwort zurücksetzen anfordern",
+    "intro": "Geben Sie Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen des Passworts zu erhalten."
   }
 }

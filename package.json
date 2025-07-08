@@ -18,6 +18,7 @@
     "test:workspace": "turbo run test",
     "test:workspace:watch": "turbo run test:watch",
     "test:workspace:coverage": "turbo run test:coverage",
+    "web": "npm run dev --workspace=@cstn/web",
     "storybook": "npm run dev --workspace=@cstn/storybook"
   },
   "devDependencies": {

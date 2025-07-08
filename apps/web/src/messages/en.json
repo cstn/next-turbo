@@ -4,25 +4,35 @@
     "about": "About",
     "contact": "Contact",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "logout": "Logout"
   },
   "footer": {
     "copyright": "© {year} Carsten Stein. All rights reserved.",
+    "imprint": "Imprint",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "help": "Help"
   },
+  "error": {
+    "headline": "Sorry",
+    "subline": "Something went wrong",
+    "home": "Home",
+    "retry": "Try again"
+  },
   "login": {
-    "title": "Login",
+    "headline": "Login",
+    "intro": "You can use the demo account demo / Test123.",
     "forgotPassword": "Forgot Password?",
-    "register": "Don't have an account? Register <link>here</link>."
+    "register": "Don't have an account? Register <link>here</link>.",
+    "CredentialsSignin": "Wrong credentials"
   },
   "register": {
-    "title": "Register",
+    "headline": "Register",
     "alreadyHaveAccount": "Already have an account? Login <link>here</link>."
   },
   "requestPassword": {
-    "title": "Request Password Reset",
-    "description": "Enter your email address to receive a password reset link."
+    "headline": "Request Password Reset",
+    "intro": "Enter your email address to receive a password reset link."
   }
 }

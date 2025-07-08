@@ -27,7 +27,7 @@ type Props = PropsWithStyle & {
     username?: string;
   };
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
+  onSubmit?: (values: FormValues) => Promise<void> | void;
 };
 
 const FormSchema = z.object({
@@ -35,19 +35,21 @@ const FormSchema = z.object({
   password: PasswordSchema,
 });
 
+export type FormValues = z.infer<typeof FormSchema>;
+
 export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onSubmit, onError }) => {
   const t = useFormTranslations();
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: defaultValues?.username ||'',
+      username: defaultValues?.username || '',
       password: '',
     },
   });
 
-  const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
+  const handleSubmit = async (values: FormValues) => {
     try {
-      await onSubmit(values);
+      onSubmit?.(values)
     } catch (ex) {
       form.setError('root', {
         message: (ex as Error).message,
@@ -66,7 +68,8 @@ export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onS
             <FormItem className={classNames?.field}>
               <FormLabel className={classNames?.label}>{t('username.label')}</FormLabel>
               <FormControl className={classNames?.control}>
-                <Input autoComplete="username" className={classNames?.input} placeholder={t('username.placeholder')} {...field} />
+                <Input autoComplete="username" className={classNames?.input}
+                       placeholder={t('username.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('username.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>
@@ -81,7 +84,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onS
               <FormLabel className={classNames?.label}>{t('password.label')}</FormLabel>
               <FormControl className={classNames?.control}>
                 <Password autoComplete="current-password" className={classNames?.input}
-                       placeholder={t('password.placeholder')} {...field} />
+                          placeholder={t('password.placeholder')} {...field} />
               </FormControl>
               <FormDescription className={classNames?.description}>{t('password.description')}</FormDescription>
               <FormMessage className={classNames?.message}/>

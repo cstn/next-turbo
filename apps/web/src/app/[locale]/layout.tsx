@@ -10,6 +10,7 @@ import '@cstn/ui/styles/globals.css';
 import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { auth } from '@/auth';
 
 type Props = PropsWithChildren & LocaleProps;
 
@@ -28,12 +29,13 @@ const RootLayout = async (props: Readonly<Props>) => {
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const session = await auth();
 
   return (
     <html lang={locale} suppressHydrationWarning>
     <body>
     <NextIntlClientProvider messages={messages}>
-      <Providers>
+      <Providers session={session}>
         <div className="flex flex-col min-h-screen bg-background text-foreground">
           <Header />
           {props.children}

@@ -14,7 +14,7 @@ const LoginPage: FC<Props> = async (props) => {
 
   return (
     <div>
-      <h1>{t('title')}</h1>
+      <h1>{t('headline')}</h1>
 
       <Register />
 
