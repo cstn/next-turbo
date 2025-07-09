@@ -1,33 +1,35 @@
 'use client';
 
-import { FC, useActionState } from 'react';
+import { FC, useState } from 'react';
 import { LoginForm, FormValues } from '@cstn/ui/forms/login-form';
-import { signInAction } from '@/app/[locale]/(auth)/login/action';
-
-type State = {
-  values: FormValues,
-};
-
-const initialState: State = {
-  values: {
-    username: '',
-    password: '',
-  },
-};
+import { signIn } from 'next-auth/react';
+import { credentialsProviders } from '@/auth/options';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 
 const Login: FC = () => {
-  const [state, action] = useActionState<State | undefined, FormData>(signInAction, initialState);
+  const t = useTranslations('login');
+  const [ error, setError ] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = async (values: FormValues) => {
-    const formData = new FormData();
-    formData.append('username', values.username);
-    formData.append('password', values.password);
+  const handleLogin = async (values: FormValues) => {
+    const result = await signIn(credentialsProviders.id, {
+      username: values.username,
+      password: values.password,
+      redirect: false,
+      callbackUrl: `/?auth=${credentialsProviders.id}`,
+    });
 
-    action(formData)
-  }
+    if (result?.error) {
+      setError(t(result.error));
+    } else {
+      setError('');
+      router.push('/dashboard');
+    }
+  };
 
   return (
-    <LoginForm defaultValues={state?.values} onSubmit={handleSubmit} />
+    <LoginForm error={error} onSubmit={handleLogin}/>
   );
 };
 

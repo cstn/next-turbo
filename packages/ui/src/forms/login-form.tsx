@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { FieldErrors, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod/v4';
 import clsx from 'clsx';
@@ -26,7 +26,7 @@ type Props = PropsWithStyle & {
   defaultValues?: {
     username?: string;
   };
-  onError?: (errors: FieldErrors) => void;
+  error?: string;
   onSubmit?: (values: FormValues) => Promise<void> | void;
 };
 
@@ -37,7 +37,7 @@ const FormSchema = z.object({
 
 export type FormValues = z.infer<typeof FormSchema>;
 
-export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onSubmit, onError }) => {
+export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, error, onSubmit }) => {
   const t = useFormTranslations();
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
@@ -60,7 +60,7 @@ export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onS
   return (
     <Form {...form}>
       <form className={clsx('w-full max-w-sm', className, classNames?.root)}
-            onSubmit={form.handleSubmit(handleSubmit, onError)}>
+            onSubmit={form.handleSubmit(handleSubmit)}>
         <FormField
           control={form.control}
           name="username"
@@ -94,6 +94,11 @@ export const LoginForm: FC<Props> = ({ className, classNames, defaultValues, onS
         {form.formState.errors.root && (
           <FormMessage className="my-4">
             {t(form.formState.errors.root.message || 'form.failed')}
+          </FormMessage>
+        )}
+        {error && (
+          <FormMessage className="my-4">
+            {error}
           </FormMessage>
         )}
         <Button disabled={form.formState.isSubmitting} type="submit">{t('login.submit')}</Button>

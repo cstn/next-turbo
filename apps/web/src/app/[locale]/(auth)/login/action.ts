@@ -5,7 +5,7 @@ import { credentialsProviders } from '@/auth/options';
 
 const FormData = CredentialsSchema;
 
-const signInAction = async (_prevState: never, formData: FormData) => {
+const signInAction = async (formData: FormData) => {
   const values = {
     username: formData.get('username') as string,
     password: formData.get('password') as string,
@@ -21,7 +21,7 @@ const signInAction = async (_prevState: never, formData: FormData) => {
     await signIn(credentialsProviders.id, {
       username: values.username,
       password: values.password,
-      redirect: true,
+      redirect: false,
       callbackUrl: `/?auth=${credentialsProviders.id}`,
     });
 

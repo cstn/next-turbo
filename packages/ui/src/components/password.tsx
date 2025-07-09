@@ -18,7 +18,7 @@ function Password({ className, ...props }: Omit<React.ComponentProps<'input'>, '
         type={isVisible ? 'text' : 'password'}
         {...props}
       />
-      <Button variant="ghost" size="icon" className="absolute bottom-1 right-1 h-7 w-7" onClick={toggleVisibility} aria-label="Toggle password visibility">
+      <Button type="button" variant="ghost" size="icon" className="absolute bottom-1 right-1 h-7 w-7" onClick={toggleVisibility} aria-label="Toggle password visibility">
         {isVisible ? <EyeOffIcon className="h-4 w-4"/> : <EyeIcon className="h-4 w-4"/>}
         <span className="sr-only">Toggle password visibility</span>
       </Button>

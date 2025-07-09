@@ -36,7 +36,7 @@ const RootLayout = async (props: Readonly<Props>) => {
     <body>
     <NextIntlClientProvider messages={messages}>
       <Providers session={session}>
-        <div className="flex flex-col min-h-screen bg-background text-foreground">
+        <div className="container mx-auto flex flex-col min-h-screen bg-background text-foreground">
           <Header />
           {props.children}
           <Footer />
