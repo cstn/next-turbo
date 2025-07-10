@@ -22,7 +22,7 @@ import { PropsWithStyle } from '@cstn/ui/props';
 
 type Props = PropsWithStyle & {
   onError?: (errors: FieldErrors) => void;
-  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void>;
+  onSubmit: (values: z.infer<typeof FormSchema>) => Promise<void> | void;
 };
 
 const FormSchema = z.object({
